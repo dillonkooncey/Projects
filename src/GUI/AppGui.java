@@ -121,7 +121,6 @@ public class AppGui extends AppBase {
 
         //this.checkValues(userNameTxt, conUserNameTxt);
         //this.checkValues(passWordTxt, conPassWordTxt);
-
         // Creating buttons using addButton() that creates a new message based on a user Event.
         Button btnRegister = this.addButton("Register", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
         Button btnExit = this.addButton("Exit to log in screen", new AppMessage(AppMessage.LOG_IN_PANEL));
