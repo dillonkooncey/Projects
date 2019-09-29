@@ -11,17 +11,15 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- *
- * @author Owner
+ * Class that displays all GUI to the user. 
+ * @author Dillon, Amina, Kumar. Last updated: September 29, 2019.
  */
 public class AppGui extends AppBase {
 
@@ -32,10 +30,10 @@ public class AppGui extends AppBase {
      * Constructor to set the passed in stage from the AppController class to
      * the defined stage.
      *
-     * @param primaryStage - Stage passed in from AppController class.
+     * @param _primaryStage - Stage passed in from AppController class.
      */
-    public AppGui(Stage primaryStage) {
-        this.stage = primaryStage;
+    public AppGui(Stage _primaryStage) {
+        this.stage = _primaryStage;
         // Build the logInPanel
         this.logInPanel();
     }
@@ -82,19 +80,20 @@ public class AppGui extends AppBase {
      * @return - Returns newly constructed scene object to loginPanel().
      */
     private Scene buildLogInPanel() {
+        // Adding the label and TextField for Username to be enetered in by user.
         Label userNameLabel = this.addLabel("Username");
         TextField userNameTxtField = this.addTextField("Username");
-
+        // Adding the label and TextField for the Passoword to be entered in by the user.
         Label passWordLabel = this.addLabel("Password");
         TextField passWordTxtField = this.addTextField("Password");
-
+        // Adding create new account button and log in button and including events for both buttons based on where those buttons are designed to route to.
         Button btnCreateNewAccount = this.addButton("Create new account", new AppMessage(AppMessage.REGISTRATION_PANEL));
         Button btnLogIn = this.addButton("Log in", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
         // Finish doing the layout of all the buttons and adding the scene.
         VBox vb = this.addVBox("Log in");
         vb.getChildren().addAll(userNameLabel, userNameTxtField, passWordLabel, passWordTxtField, btnCreateNewAccount, btnLogIn);
         vb.setAlignment(Pos.CENTER);
-
+        // Creating a new scene and returning that new scene back to the logInPanel().
         Scene scene = new Scene(vb, 800, 400);
         return scene;
     }
@@ -111,44 +110,34 @@ public class AppGui extends AppBase {
         Label passWordLbl = this.addLabel("Password: ");
         Label nameLbl = this.addLabel("Name: ");
         Label conPassWordLbl = this.addLabel("Confirm password: ");
-
         // Creting the TextFields using addTextField().
         TextField userNameTxt = this.addTextField("Username");
         TextField conUserNameTxt = this.addTextField("Confirm Username");
         TextField passWordTxt = this.addTextField("Password");
         TextField conPassWordTxt = this.addTextField("Confirm password");
         TextField nameTxt = this.addTextField("First and last name");
-
-        //this.checkValues(userNameTxt, conUserNameTxt);
-        //this.checkValues(passWordTxt, conPassWordTxt);
         // Creating buttons using addButton() that creates a new message based on a user Event.
         Button btnRegister = this.addButton("Register", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
         Button btnExit = this.addButton("Exit to log in screen", new AppMessage(AppMessage.LOG_IN_PANEL));
-
         // Creating the GridPane to organize the scene.
         GridPane gPane = this.buildGridPane("Register");
-
         // Adding Labels to GridPane and organizing them.
         gPane.add(nameLbl, 0, 0);
         gPane.add(userNameLbl, 0, 1);
         gPane.add(conUserNameLbl, 0, 2);
         gPane.add(passWordLbl, 0, 3);
         gPane.add(conPassWordLbl, 0, 4);
-
         // Adding the TextFields and organizing them.
         gPane.add(nameTxt, 1, 0);
         gPane.add(userNameTxt, 1, 1);
         gPane.add(conUserNameTxt, 1, 2);
         gPane.add(passWordTxt, 1, 3);
         gPane.add(conPassWordTxt, 1, 4);
-
         // Adding the Buttons to the GridPane and organizing them.
         gPane.add(btnExit, 0, 5);
         gPane.add(btnRegister, 1, 5);
-
         // Creating a new Scene and populating that scene with previously created gPane.
         Scene scene = new Scene(gPane, 800, 400);
-
         // Returning newly created scene object to registrationPanel();
         return scene;
     }
@@ -159,24 +148,50 @@ public class AppGui extends AppBase {
      * @return - Returns newly created scene object to homeScreenPanel().
      */
     private Scene buildHomeScreenPanel() {
-        // Creating the TabPane object.
-        TabPane tPane = this.buildTabPane("Home Screen");
-        // Creating a new producers Tab in the tPane TabPane object. Also adds the tab contents to build the Tab.
-        Tab producersTab = this.addTab("Producers");
-        // Creates a new directors Tab in the tPane TabPane object. Also adds the Tab contents to build the Tab.
-        Tab directorsTab = this.addTab("Directors");
-        // Creates a new writers Tab in the tPane TabPane object. Also adds the Tab contents to build the Tab.
-        Tab writersTab = this.addTab("Writers");
-        // Creates a new actors Tab in the tPane TabPane object. Also adds the Tab contents to build the Tab.
-        Tab actorsTab = this.addTab("Actors");
-
-        // Adds all of the Tabs to the TabPane object.
-        tPane.getTabs().addAll(producersTab, directorsTab, writersTab, actorsTab);
-
-        // Creates a new scene and populates it with the TabPane object.
-        Scene scene = new Scene(tPane, 800, 400);
-        // Returns the newly created scene.
+        // Creating the TilePane object.
+        TilePane tilePane = new TilePane();
+        // Adding labels for the TilePane for prompting the user.
+        Label welcomeLbl = this.addLabel("Welcome to our App!!");
+        Label selectLbl = this.addLabel("Select which panel you would like to view:");
+        // Creating the available buttons for the TilePane Object.
+        Button proBtn = this.addButton("Producers", new AppMessage(AppMessage.PRODUCER_PANEL));
+        Button dirBtn = this.addButton("Directors", new AppMessage(AppMessage.DIRECTORS_PANEL));
+        Button wirBtn = this.addButton("Writers", new AppMessage(AppMessage.WRITERS_PANEL));
+        Button actBtn = this.addButton("Actors", new AppMessage(AppMessage.ACTORS_PANEL));
+        Button exitBtn = this.addButton("Log out", new AppMessage(AppMessage.LOG_IN_PANEL));
+        // Sending the TilePane and its labels/buttons to a method to create the full TilePane.
+        this.createHomeScreenTilePane(welcomeLbl, selectLbl, tilePane, proBtn, dirBtn, wirBtn, actBtn, exitBtn);
+        // Creating a new scene and populating it with the newly created TilePane object.
+        Scene scene = new Scene(tilePane, 300, 400);
+        // Returing the new scene.
         return scene;
+
+    }
+
+    /**
+     * Method that creates the TilePane for the Home screen.
+     * @param _welcomeLabel - Label that prints "Welcome to our App!!".
+     * @param _selectLbl - Label prompting user to select one of the available panels.
+     * @param _tPane - The TilePane object.
+     * @param _producer - The button for the Producer Panel.
+     * @param _director - The button for the director panel.
+     * @param _writer - The button for the writer panel.
+     * @param _actor - The button for the actor panel.
+     * @param _logOut - The button for the logout panel.
+     * @return - Returns the newly created TilePane object back to buildHomeScreenPanel().
+     */
+    private TilePane createHomeScreenTilePane(Label _welcomeLabel, Label _selectLbl, TilePane _tPane, Button _producer, 
+            Button _director, Button _writer, Button _actor, Button _logOut) {
+        // Adding the Buttons/Labels to the TilePane.
+        _tPane.getChildren().addAll(_welcomeLabel, _selectLbl, _producer, _director, _writer, _actor, _logOut);
+        // Setting the alignment for the TilePane.
+        _tPane.setAlignment(Pos.CENTER);
+        _tPane.setPrefColumns(2);
+        // Setting the Horizontal and Verticle spacing of the buttons for the TilePane.
+        _tPane.setHgap(10);
+        _tPane.setVgap(10);
+        // Returning the newly built TilePane.
+        return _tPane;
     }
 
     /**
@@ -187,9 +202,11 @@ public class AppGui extends AppBase {
      * @return - New Button object.
      */
     private Button addButton(String _name, final AppMessage _message) {
+        // Adding a new Button object.
         Button btn = new Button();
+        // Setting the text for that button.
         btn.setText(_name);
-        //Add setOnAction event
+        //Add setOnAction event to perform action user desires.
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -198,6 +215,7 @@ public class AppGui extends AppBase {
                 fireEvent(appEvent);
             }
         });
+        // Return newly created button object with new event action capability.
         return btn;
     }
 
@@ -208,8 +226,11 @@ public class AppGui extends AppBase {
      * @return - New label object.
      */
     private Label addLabel(String _name) {
+        // Creating a new label object.
         Label lbl = new Label();
+        // Adding text for that label based on passed in String.
         lbl.setText(_name);
+        // Returning that newly created Label.
         return lbl;
 
     }
@@ -221,9 +242,13 @@ public class AppGui extends AppBase {
      * @return - Returns created TextField object.
      */
     private TextField addTextField(String _name) {
+        // Creating a new TextField object.
         TextField txtField = new TextField();
+        // Setting the text for that TextField based on passed in string.
         txtField.setText(_name);
+        // Adding prompt text so user knows what needs to be entered in that partcular TextField.
         txtField.setPromptText(_name);
+        // Returning this newly created TextField.
         return txtField;
     }
 
@@ -263,28 +288,6 @@ public class AppGui extends AppBase {
         gp.setHgap(5);
         // Returns newly created GridPane.
         return gp;
-    }
-
-    /**
-     * Method that creates a new TabPane object and returns it.
-     *
-     * @param _name - Name of the TabPane.
-     * @return - Newly created TabPane object.
-     */
-    private TabPane buildTabPane(String _name) {
-        TabPane tp = new TabPane();
-        return tp;
-    }
-
-    /**
-     * Method that creates a new Tab
-     *
-     * @param _name
-     * @return
-     */
-    private Tab addTab(String _name) {
-        Tab tab = new Tab(_name);
-        return tab;
     }
 
     /**
