@@ -8,13 +8,15 @@ import Models.AppBase;
 import javafx.stage.Stage;
 
 /**
- *
- * @author Owner
+ * Class that acts as the controller for the Application. This class loads panels and 
+ * send the User to certain panels based on GUI commands.
+ * @author Dillon, Amina, Kumar. Last updated: September 29, 2019.
  */
 public class AppController implements ListenerInterface {
 
     // Creates a new AppGui object to later on be 
     protected AppGui gui;
+    // Creats a new AppBase object that clears out any "active module" so that the new module can be displayed based on user input.
     protected AppBase activeModule = null;
 
     /**
