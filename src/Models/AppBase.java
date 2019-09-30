@@ -27,6 +27,7 @@ public class AppBase implements ListenerInterface {
         Object[] temp_list = this.listeners.toArray();
         for (Object temp_list1 : temp_list) {
             ListenerInterface temp_obj = (ListenerInterface) temp_list1;
+            // Sends the event to objects listening for.
             temp_obj.messageRecieved(event);
         }
     }
@@ -37,6 +38,6 @@ public class AppBase implements ListenerInterface {
      */
     @Override
     public void messageRecieved(AppEvent _event) {
-        System.out.println("This module does not receive messages.");
+        System.out.println("This module does not act on messages.");
     }
 }
