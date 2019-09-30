@@ -2,19 +2,21 @@ package App;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+
 /**
  *
- * @author Owner
+ * @author Dillon, Amina, Kumar. Last Updated: September 29, 2019.
  */
-public class Main extends Application{
+public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage)  {
+    public void start(Stage primaryStage) {
         AppController appContol = new AppController(primaryStage);
+
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
