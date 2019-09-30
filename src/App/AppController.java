@@ -35,28 +35,27 @@ public class AppController implements ListenerInterface {
 
     /**
      * Method to open the logInPanel.
+     * Controller for Log in panel.
      */
     private void logInPanel() {
         // Loads the logInPanel() in AppGui class.
         this.gui.logInPanel();
-        this.gui.removeListener(this.activeModule);
-        this.activeModule = null;
     }
 
     /**
-     * Method to load the registrationPanel.
+     * Method to load the registrationPanel in AppGui class.
+     * Controller for registration panel.
      */
     private void registrationPanel() {
         this.gui.registrationPanel();
-        this.activeModule = null;
     }
 
     /**
-     * Method to load the homeScreenPanel.
+     * Method to load the homeScreenPanel in AppGui class.
+     * Controller for home screen panel.
      */
     private void homeScreenPanel() {
         this.gui.homeScreenPanel();
-        this.activeModule = null;
     }
 
     /**
