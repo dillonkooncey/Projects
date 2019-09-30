@@ -4,7 +4,6 @@ import Events.AppEvent;
 import Events.AppMessage;
 import Events.ListenerInterface;
 import GUI.AppGui;
-import Models.AppBase;
 import javafx.stage.Stage;
 
 /**
@@ -16,8 +15,6 @@ public class AppController implements ListenerInterface {
 
     // Creates a new AppGui object to later on be used.
     protected AppGui gui;
-    // Creats a new AppBase object that clears out any "active module" so that the new module can be displayed based on user input.
-    protected AppBase activeModule = null;
 
     /**
      * Constructor to create new AppController object. Also adds the module as a
