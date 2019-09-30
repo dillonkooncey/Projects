@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  */
 public class AppController implements ListenerInterface {
 
-    // Creates a new AppGui object to later on be 
+    // Creates a new AppGui object to later on be used.
     protected AppGui gui;
     // Creats a new AppBase object that clears out any "active module" so that the new module can be displayed based on user input.
     protected AppBase activeModule = null;
@@ -27,7 +27,9 @@ public class AppController implements ListenerInterface {
      * for the user.
      */
     public AppController(Stage primaryStage) {
+        // Creates stage for the AppGui to show.
         this.gui = new AppGui(primaryStage);
+        // Sets the controller as a listener.
         this.gui.addListener(this);
     }
 
