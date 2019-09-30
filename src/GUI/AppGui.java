@@ -34,7 +34,7 @@ public class AppGui extends AppBase {
      */
     public AppGui(Stage _primaryStage) {
         this.stage = _primaryStage;
-        // Build the logInPanel
+        // Show the logInPanel
         this.logInPanel();
     }
 
@@ -290,22 +290,5 @@ public class AppGui extends AppBase {
         return gp;
     }
 
-    /**
-     * Method that checks to see if user enters the same values for
-     * Username/confirm username and password/confirm password.
-     *
-     * @param _name1 - Name of first input.
-     * @param _name2 - name of second input.
-     */
-    private void checkValues(TextField _name1, TextField _name2) {
-        // Gets the values enterd into the text field.
-        _name1.getText();
-        _name2.getText();
-        /* If statement to compare the two values. If they are not equal, it 
-        rebuilds the registration panel to be refilled by the user.*/
-        if (!_name1.equals(_name2)) {
-            this.buildRegistrationPanel();
-        }
-    }
 
 }
