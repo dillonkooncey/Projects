@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  */
 public class AppGui extends AppBase {
 
-    // Create Stage object to take in the stage passed in from the controller.
+    // Create Stage object that will be built based on how panel is to be designed.
     private final Stage stage;
 
     /**
@@ -33,6 +33,7 @@ public class AppGui extends AppBase {
      * @param _primaryStage - Stage passed in from AppController class.
      */
     public AppGui(Stage _primaryStage) {
+        // Assign _primaryStage as this.stage.
         this.stage = _primaryStage;
         // Show the logInPanel
         this.logInPanel();
@@ -40,43 +41,52 @@ public class AppGui extends AppBase {
 
     /**
      * Loads log in panel.
+     * View panel for log in.
      */
     public void logInPanel() {
         // Create a scene that will call the buildLogInPanel() to build that scene.
         Scene scene = this.buildLogInPanel();
         // Set the title of the passed in stage,then set the scene, and show the stage.
         this.stage.setTitle("Log In");
+        // Sets the scene as the scene created in buildLogInPanel().
         this.stage.setScene(scene);
+        // Display the stage.
         this.stage.show();
     }
 
     /**
      * Loads registration panel.
+     * View Panel for registration panel.
      */
     public void registrationPanel() {
         // Create a scene that will call the buildRegistrationPanel() to build the scene.
         Scene scene = this.buildRegistrationPanel();
         // Set the title of the passed in stage,then set the scene, and show the stage.
         this.stage.setTitle("Register");
+        // Sets the scene as th scene created in buildRegistrationPanel().
         this.stage.setScene(scene);
+        // Display the stage.
         this.stage.show();
     }
 
     /**
      * Loads home screen panel.
+     * View panel for homeScreenPanel.
      */
     public void homeScreenPanel() {
         // Create a scene that will call the buildHomeScreenPanel() to build the scene.
         Scene scene = this.buildHomeScreenPanel();
         // Set the title of the passed in stage,then set the scene, and show the stage.
         this.stage.setTitle("Home Screen");
+        // Sets the scene as the scene created in buildHomeScreenPanel();
         this.stage.setScene(scene);
+        // Display the stage.
         this.stage.show();
     }
 
     /**
      * Constructs the scene for the login screen.
-     *
+     * Model for log in panel.
      * @return - Returns newly constructed scene object to loginPanel().
      */
     private Scene buildLogInPanel() {
@@ -95,12 +105,13 @@ public class AppGui extends AppBase {
         vb.setAlignment(Pos.CENTER);
         // Creating a new scene and returning that new scene back to the logInPanel().
         Scene scene = new Scene(vb, 800, 400);
+        // return the scene.
         return scene;
     }
 
     /**
      * Constructs the scene for the registration screen.
-     *
+     * Model for registration panel.
      * @return - Returns newly created scene object to registrationPanel().
      */
     private Scene buildRegistrationPanel() {
@@ -144,7 +155,7 @@ public class AppGui extends AppBase {
 
     /**
      * Constructs the scene for the home screen.
-     *
+     * Model for home Screen panel.
      * @return - Returns newly created scene object to homeScreenPanel().
      */
     private Scene buildHomeScreenPanel() {
