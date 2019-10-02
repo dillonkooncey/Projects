@@ -3,6 +3,7 @@ package GUI;
 import Events.AppEvent;
 import Events.AppMessage;
 import Models.AppBase;
+import javafx.collections.FXCollections;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -90,23 +92,35 @@ public class AppGui extends AppBase {
      * @return - Returns newly constructed scene object to loginPanel().
      */
     private Scene buildLogInPanel() {
-        // Adding the label and TextField for Username to be enetered in by user.
-        Label userNameLabel = this.addLabel("Username");
-        TextField userNameTxtField = this.addTextField("Username");
-        // Adding the label and TextField for the Passoword to be entered in by the user.
-        Label passWordLabel = this.addLabel("Password");
-        TextField passWordTxtField = this.addTextField("Password");
-        // Adding create new account button and log in button and including events for both buttons based on where those buttons are designed to route to.
-        Button btnCreateNewAccount = this.addButton("Create new account", new AppMessage(AppMessage.REGISTRATION_PANEL));
-        Button btnLogIn = this.addButton("Log in", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
-        // Finish doing the layout of all the buttons and adding the scene.
-        VBox vb = this.addVBox("Log in");
-        vb.getChildren().addAll(userNameLabel, userNameTxtField, passWordLabel, passWordTxtField, btnCreateNewAccount, btnLogIn);
-        vb.setAlignment(Pos.CENTER);
-        // Creating a new scene and returning that new scene back to the logInPanel().
-        Scene scene = new Scene(vb, 800, 400);
-        // return the scene.
+        // Creating the GridPane object that will be initially constructed in the buildGridPane().
+        GridPane grid = this.buildGridPane();
+        // Sets the verticle gap between rows in GridPane.
+        grid.setVgap(10);
+        // Sets the Horizontal gap between Columns in GridPane.
+        grid.setHgap(10);
+        // Creating the username label and Textfield which will be build helper methods.
+        Label userNameLbl = this.addLabel("Username: ");
+        TextField userNameTxt = this.addTextField("Username");
+        // Creating the password label and textfield which will be built by helper methods.
+        Label passWordLbl = this.addLabel("Password: ");
+        TextField passWordTxt = this.addTextField("Password");
+        // Creating the "create new account" and "log in" button.
+        Button registerBtn = this.addButton("Create new account", new AppMessage(AppMessage.REGISTRATION_PANEL));
+        Button logInBtn = this.addButton("Log in", new AppMessage(AppMessage.HOME_SCREEN_PANEL));        
+        // Organizing the GridPane objects labels.
+        grid.add(userNameLbl, 0, 0);
+        grid.add(passWordLbl, 0, 1);        
+        // Orgainzing the GridPane objects TextFields.
+        grid.add(userNameTxt, 1, 0);
+        grid.add(passWordTxt, 1, 1);        
+        // Orgainzing the GridPane objects buttons.
+        grid.add(registerBtn, 1, 2);
+        grid.add(logInBtn, 0, 2);
+        // Creating the scene.
+        Scene scene = new Scene(grid, 450, 350);
+        // Returning the newly built scene object.
         return scene;
+        
     }
 
     /**
@@ -115,41 +129,43 @@ public class AppGui extends AppBase {
      * @return - Returns newly created scene object to registrationPanel().
      */
     private Scene buildRegistrationPanel() {
-        // Creating the labels using addLabel().
+        // Creating the GridPane object and setting the Verticle/Horizontal gap.
+        GridPane grid = this.buildGridPane();
+        grid.setVgap(20);
+        grid.setHgap(10);
+        // Creating a Registration label to act as a Title for the panel.
+        Label registration = this.addLabel("Registration");        
+        // Label and TextField for email information.
+        Label emailLbl = this.addLabel("Email: ");
+        TextField emailTxt = this.addTextField("Email");
+        // Label and TextField for username information.
         Label userNameLbl = this.addLabel("Username: ");
-        Label conUserNameLbl = this.addLabel("Confirm Username: ");
-        Label passWordLbl = this.addLabel("Password: ");
-        Label nameLbl = this.addLabel("Name: ");
-        Label conPassWordLbl = this.addLabel("Confirm password: ");
-        // Creting the TextFields using addTextField().
         TextField userNameTxt = this.addTextField("Username");
-        TextField conUserNameTxt = this.addTextField("Confirm Username");
+        // Label and TextField for Password information.
+        Label passWordLbl = this.addLabel("Password: ");
         TextField passWordTxt = this.addTextField("Password");
-        TextField conPassWordTxt = this.addTextField("Confirm password");
-        TextField nameTxt = this.addTextField("First and last name");
-        // Creating buttons using addButton() that creates a new message based on a user Event.
-        Button btnRegister = this.addButton("Register", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
-        Button btnExit = this.addButton("Exit to log in screen", new AppMessage(AppMessage.LOG_IN_PANEL));
-        // Creating the GridPane to organize the scene.
-        GridPane gPane = this.buildGridPane("Register");
-        // Adding Labels to GridPane and organizing them.
-        gPane.add(nameLbl, 0, 0);
-        gPane.add(userNameLbl, 0, 1);
-        gPane.add(conUserNameLbl, 0, 2);
-        gPane.add(passWordLbl, 0, 3);
-        gPane.add(conPassWordLbl, 0, 4);
-        // Adding the TextFields and organizing them.
-        gPane.add(nameTxt, 1, 0);
-        gPane.add(userNameTxt, 1, 1);
-        gPane.add(conUserNameTxt, 1, 2);
-        gPane.add(passWordTxt, 1, 3);
-        gPane.add(conPassWordTxt, 1, 4);
-        // Adding the Buttons to the GridPane and organizing them.
-        gPane.add(btnExit, 0, 5);
-        gPane.add(btnRegister, 1, 5);
-        // Creating a new Scene and populating that scene with previously created gPane.
-        Scene scene = new Scene(gPane, 800, 400);
-        // Returning newly created scene object to registrationPanel();
+        // Label and TextField for account "Job Title".
+        Label optionsLbl = this.addLabel("Options: ");
+        ChoiceBox choices = this.buildChoiceBox();
+        // Buttons for registering the account and exiting to the log in screen.
+        Button registerBtn = this.addButton("Submit", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
+        Button logOutBtn = this.addButton("Return to log in screen", new AppMessage(AppMessage.LOG_IN_PANEL));        
+        // Organizing the Labels in the GridPane object.
+        grid.add(registration, 0, 0, 2, 1);
+        grid.add(emailLbl, 0, 1);
+        grid.add(userNameLbl, 0, 2);
+        grid.add(passWordLbl, 0, 3);
+        grid.add(optionsLbl, 0, 4);        
+        // Organizing the TextFields, Buttons, and ChoiceBox in GridPane object.
+        grid.add(emailTxt, 1, 1);
+        grid.add(userNameTxt, 1, 2);
+        grid.add(passWordTxt, 1, 3);
+        grid.add(choices, 1, 4);
+        grid.add(registerBtn, 0, 5);
+        grid.add(logOutBtn, 1, 5);
+        // Creating a new Scene object and populating it with the newly build grid.
+        Scene scene = new Scene(grid, 450, 350);
+        // Returning the newly build scene.
         return scene;
     }
 
@@ -255,29 +271,8 @@ public class AppGui extends AppBase {
     private TextField addTextField(String _name) {
         // Creating a new TextField object.
         TextField txtField = new TextField();
-        // Setting the text for that TextField based on passed in string.
         txtField.setText(_name);
-        // Adding prompt text so user knows what needs to be entered in that partcular TextField.
-        txtField.setPromptText(_name);
-        // Returning this newly created TextField.
         return txtField;
-    }
-
-    /**
-     * Method for creating a VBox object.
-     *
-     * @param _boxName - Name passed in to name the VBox object.
-     * @return - Returns newly created VBox.
-     */
-    private VBox addVBox(String _boxName) {
-        // Creates the VBox.
-        VBox vBox = new VBox();
-        // Sets the spacing for items in the VBox.
-        vBox.setSpacing(10);
-        // Sets the padding around the edges for the VBox.
-        vBox.setPadding(new Insets(10, 50, 50, 50));
-        // Returns the newly created VBox.
-        return vBox;
     }
 
     /**
@@ -286,19 +281,23 @@ public class AppGui extends AppBase {
      * @param _name - Name of the GridPane.
      * @return - Returns newly created GridPane object.
      */
-    private GridPane buildGridPane(String _name) {
+    private GridPane buildGridPane() {
         // Creates new GridPane object.
         GridPane gp = new GridPane();
+        // Setting the alignment of the GridPane object passed in.
+        gp.setAlignment(Pos.CENTER);
         // Sets the padding of GridPane.
         gp.setPadding(new Insets(10, 10, 10, 10));
         // Sets the minimum size of GridPane.
-        gp.setMinSize(400, 200);
-        // Sets the verticle gap between rows in GridPane.
-        gp.setVgap(5);
-        // Sets the Horizontal gap between Columns in GridPane.
-        gp.setHgap(5);
         // Returns newly created GridPane.
         return gp;
+    }
+    
+    private ChoiceBox buildChoiceBox() {
+        ChoiceBox choice = new ChoiceBox();
+        choice.setItems(FXCollections.observableArrayList("Producer", "Artist", "Agent"));        
+        return choice;
+        
     }
 
 
