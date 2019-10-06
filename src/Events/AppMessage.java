@@ -10,10 +10,11 @@ public class AppMessage {
     public static final int REGISTRATION_PANEL = 2;
     public static final int HOME_SCREEN_PANEL = 3;
     public static final int EXIT_PANEL = 4;
-    public static final int PRODUCER_PANEL = 5;
-    public static final int DIRECTORS_PANEL = 6;
-    public static final int WRITERS_PANEL = 7;
-    public static final int ACTORS_PANEL = 8;
+    public static final int ALL_MOVIES_PANEL = 5;
+    public static final int MOVIE_GENRE_PANEL = 6;
+    public static final int MOVIE_RATING_PANEL = 7;
+    public static final int MOVIE_ACTORS_PANEL = 8;
+    public static final int OPTIONS_PANEL = 9;
     
     // Create integer to be assigned to message value passed into constructor.
     private final int thisMessage;
