@@ -29,22 +29,23 @@ public class DataBase {
 
     /**
      * Method that checks to see if a username and password exists in the database.
+     * @param _email - Email checked to see if it exists.
      * @param _username - Username checked to see if it exists.
      * @param _password - Password checked to see if it exists.
      * @return - Return true if user does exists, false if they do not.
      */
-    public Boolean isUser(String _username, String _password) {
+    public Boolean isUser(String _email, String _username, String _password) {
         try {
             con = DriverManager.getConnection(host, userName, passWord);
-            String SQL = "SELECT * FROM Users where Username = '" + _username + "' and Password = '" + _password + "'";
+            String SQL = "SELECT * FROM Users where Email = '" + _email + "' and Username = '" + _username + "' and Password = '" + _password + "'";
             pst = con.prepareStatement(SQL);
             rs = pst.executeQuery();
             if (rs.next()) {
-                System.out.println("Username and password matched");
+                System.out.println("Email, Username, and password matched");
                 con.close();
                 return true;
             } else {
-                System.out.println("Username and password not matched");
+                System.out.println("Something did not match");
                 con.close();
                 return false;
             }
