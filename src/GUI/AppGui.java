@@ -3,6 +3,7 @@ package GUI;
 import Events.AppEvent;
 import Events.AppMessage;
 import Events.AppBase;
+import UserModels.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -147,9 +148,6 @@ public class AppGui extends AppBase {
         // Label and TextField for Password information.
         Label passWordLbl = this.addLabel("Password: ");
         TextField passWordTxt = this.addTextField("Password");
-        // Label and TextField for account "Job Title".
-        Label optionsLbl = this.addLabel("Options: ");
-        ChoiceBox choices = this.buildChoiceBox();
         // Buttons for registering the account and exiting to the log in screen.
         Button registerBtn = this.addButton("Submit", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
         Button logOutBtn = this.addButton("Return to log in screen", new AppMessage(AppMessage.LOG_IN_PANEL));
@@ -158,12 +156,10 @@ public class AppGui extends AppBase {
         grid.add(emailLbl, 0, 1);
         grid.add(userNameLbl, 0, 2);
         grid.add(passWordLbl, 0, 3);
-        grid.add(optionsLbl, 0, 4);
         // Organizing the TextFields, Buttons, and ChoiceBox in GridPane object.
         grid.add(emailTxt, 1, 1);
         grid.add(userNameTxt, 1, 2);
         grid.add(passWordTxt, 1, 3);
-        grid.add(choices, 1, 4);
         grid.add(registerBtn, 0, 5);
         grid.add(logOutBtn, 1, 5);
         // Creating a new Scene object and populating it with the newly build grid.
@@ -206,21 +202,42 @@ public class AppGui extends AppBase {
      * Method that checks to see if a user exists in the database upon log in.
      *
      * @param _name - Name of the button.
+     * @param _email - The email entered in to be checked.
      * @param _username - The username entered in to be checked.
      * @param _password - The password entered in to be checked.
      * @return - Return the button object and its message.
      */
-    /*private Button logInRegistration(String _email, String _username, String _password) {
+    private Button logInRegistration(String _name, String _email, String _username, String _password) {
+        // Boolean for getting true or false from isUser() in DataBase class.
         Boolean isUser = this.db.isUser(_email, _username, _password);
+        // If statement for if the information matches with a user, set the information as the current user and route GUI to home screen panel.
         if(isUser) {
-            Button btn = this.addButton(_name, new AppMessage(AppMessage.HOME_SCREEN_PANEL));
             User user = new User(_email, _username, _password);
+            Button btn = this.addButton(_name, new AppMessage(AppMessage.HOME_SCREEN_PANEL));
             return btn;
+            // Else route GUI back to log in panel because the information entered in didnt match with a user.
         } else {
             Button btn = this.addButton(_name, new AppMessage(AppMessage.LOG_IN_PANEL));
             return btn;
         }
-    }*/
+    }
+    
+    /**
+     * Method that checks to see if the information entered in from user is an existing account.
+     * If so return to the registration scene, if not add this information to the database.
+     * @return 
+     */
+    private Button registeringAccount(String _name, String _email, String _username, String _password) {
+        Boolean addingUser = this.db.addUser(_email, _username, _password);
+        Button btn = new Button();
+        if(addingUser == true) {
+            User user = new User(_email, _username, _password);
+            btn = this.addButton(_name, new AppMessage(AppMessage.HOME_SCREEN_PANEL));
+        } else {
+            btn = this.addButton(_name, new AppMessage(AppMessage.REGISTRATION_PANEL));
+        }
+        return btn;
+    }
 
     /**
      * Constructs a new Button with given parameters.
