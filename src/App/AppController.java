@@ -12,7 +12,6 @@ import javafx.stage.Stage;
  * @author Dillon, Amina, Kumar. Last updated: September 29, 2019.
  */
 public class AppController implements ListenerInterface {
-
     // Creates a new AppGui object to later on be used.
     protected AppGui gui;
 
