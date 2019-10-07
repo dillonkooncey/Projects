@@ -7,11 +7,13 @@ import GUI.AppGui;
 import javafx.stage.Stage;
 
 /**
- * Class that acts as the controller for the Application. This class loads panels and 
- * send the User to certain panels based on GUI commands.
- * @author Dillon, Amina, Kumar. Last updated: September 29, 2019.
+ * Class that acts as the controller for the Application. This class loads
+ * panels and send the User to certain panels based on GUI commands.
+ *
+ * @author Dillon, Amina, Kumar. Last updated: October 6, 2019.
  */
 public class AppController implements ListenerInterface {
+
     // Creates a new AppGui object to later on be used.
     protected AppGui gui;
 
@@ -30,8 +32,7 @@ public class AppController implements ListenerInterface {
     }
 
     /**
-     * Method to open the logInPanel.
-     * Controller for Log in panel.
+     * Method to open the logInPanel. Controller for Log in panel.
      */
     private void logInPanel() {
         // Loads the logInPanel() in AppGui class.
@@ -39,16 +40,16 @@ public class AppController implements ListenerInterface {
     }
 
     /**
-     * Method to load the registrationPanel in AppGui class.
-     * Controller for registration panel.
+     * Method to load the registrationPanel in AppGui class. Controller for
+     * registration panel.
      */
     private void registrationPanel() {
         this.gui.registrationPanel();
     }
 
     /**
-     * Method to load the homeScreenPanel in AppGui class.
-     * Controller for home screen panel.
+     * Method to load the homeScreenPanel in AppGui class. Controller for home
+     * screen panel.
      */
     private void homeScreenPanel() {
         this.gui.homeScreenPanel();
@@ -57,6 +58,7 @@ public class AppController implements ListenerInterface {
     /**
      * Overridden method from the ListenerInterface that performs actions based
      * on what the AppController module listens for.
+     *
      * @param _event - Includes instructions for controller to route user to
      * different modules based on certain events.
      */
