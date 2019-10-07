@@ -1,5 +1,6 @@
 package GUI;
 
+import DataBase.DataBase;
 import Events.AppEvent;
 import Events.AppMessage;
 import Events.AppBase;
