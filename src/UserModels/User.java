@@ -1,6 +1,6 @@
 package UserModels;
 
-import GUI.DataBase;
+import DataBase.DataBase;
 
 /**
  * USer class that defines user attributes and methods defining what users can
@@ -9,13 +9,13 @@ import GUI.DataBase;
  * @author Dillon, Amina, Kumar. Last updated: October 6, 2019.
  */
 public class User {
-
+    // Data fields for User class.
     private String email;
     private String username;
     private String password;
-
+    // DataBase object to give access to DataBase class.
     private DataBase db;
-
+    // Constuctor to construct new User object.
     public User(String _email, String _username, String _password) {
         this.email = _email;
         this.username = _username;
@@ -69,7 +69,10 @@ public class User {
      * @param _email - New email for user.
      */
     private void changeEmail(String _email) {
-        db.changeEmail(_email, this.getEmail());
+        Boolean check = db.changeEmail(_email, this.getEmail());
+        if(check == true) {
+            this.setEmail(_email);
+        }
     }
 
     /**
@@ -78,7 +81,10 @@ public class User {
      * @param _username - The new user name.
      */
     private void changeUsername(String _username) {
-        db.changeUsername(_username, this.getUsername());
+        Boolean check = db.changeUsername(_username, this.getUsername());
+        if(check == true) {
+            this.setUsername(_username);
+        }
     }
 
     /**
@@ -87,7 +93,10 @@ public class User {
      * @param _password - The users new password.
      */
     private void changePassword(String _password) {
-        db.changePassword(_password, this.getUsername(), this.getPassword());
+        Boolean check = db.changePassword(_password, this.getUsername(), this.getPassword());
+        if(check == true) {
+            this.setPassword(_password);
+        }
     }
 
     // =========== SETTERS ============= //
