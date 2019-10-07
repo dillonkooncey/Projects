@@ -186,7 +186,7 @@ public class AppGui extends AppBase {
         Button searchMovieGenreBtn = this.addButton("Search movies by genre", new AppMessage(AppMessage.MOVIE_GENRE_PANEL));
         Button searchMovieActorsBtn = this.addButton("Search Movie Actors", new AppMessage(AppMessage.MOVIE_ACTORS_PANEL));
         Button searchMovieRatingBtn = this.addButton("Search movies by rating", new AppMessage(AppMessage.MOVIE_RATING_PANEL));
-        Button optionsBtn = this.addButton("Options", new AppMessage(AppMessage.OPTIONS_PANEL));
+        Button optionsBtn = this.addButton("Log out", new AppMessage(AppMessage.LOG_IN_PANEL));
         // Adding the labels and buttons to the gridpane object.
         grid.add(optionsBtn, 3, 0);
         grid.add(homeScreenLbl, 0, 1, 2, 1);
