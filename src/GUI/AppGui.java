@@ -5,6 +5,8 @@ import Events.AppEvent;
 import Events.AppMessage;
 import Events.AppBase;
 import UserModels.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -186,9 +188,9 @@ public class AppGui extends AppBase {
         Button searchMovieGenreBtn = this.addButton("Search movies by genre", new AppMessage(AppMessage.MOVIE_GENRE_PANEL));
         Button searchMovieActorsBtn = this.addButton("Search Movie Actors", new AppMessage(AppMessage.MOVIE_ACTORS_PANEL));
         Button searchMovieRatingBtn = this.addButton("Search movies by rating", new AppMessage(AppMessage.MOVIE_RATING_PANEL));
-        Button optionsBtn = this.addButton("Log out", new AppMessage(AppMessage.LOG_IN_PANEL));
+        Button logOutBtn = this.addButton("Log out", new AppMessage(AppMessage.LOG_IN_PANEL));
         // Adding the labels and buttons to the gridpane object.
-        grid.add(optionsBtn, 3, 0);
+        grid.add(logOutBtn, 3, 0);
         grid.add(homeScreenLbl, 0, 1, 2, 1);
         grid.add(searchMoviesBtn, 0, 2);
         grid.add(searchMovieGenreBtn, 1, 2);
@@ -208,18 +210,18 @@ public class AppGui extends AppBase {
      * @param _password - The password entered in to be checked.
      * @return - Return the button object and its message.
      */
-    private Button logInRegistration(String _name, String _email, String _username, String _password) {
+    private Button logInRegistration(String _btnName, String _email, String _username, String _password) {
         // Boolean for getting true or false from isUser() in DataBase class.
-        Boolean isUser = this.db.isUser(_email, _username, _password);
+        User isUser = this.db.isUser(_email, _username, _password);
         // Creating a new button.
         Button btn = new Button();
-        // If statement for if the information matches with a user, set the information as the current user and route GUI to home screen panel.
-        if (isUser) {
-            this.user = new User(_email, _username, _password);
-            btn = this.addButton(_name, new AppMessage(AppMessage.HOME_SCREEN_PANEL));
-            // Else route GUI back to log in panel because the information entered in didnt match with a user.
+        // If statement for if the information = null return to log in screen.
+        if (isUser == null) {
+            btn = this.addButton(_btnName, new AppMessage(AppMessage.LOG_IN_PANEL));
+        // Else the user exists so create a new user object and route user to home screen.
         } else {
-            btn = this.addButton(_name, new AppMessage(AppMessage.LOG_IN_PANEL));
+            this.user = new User(_email, _username, _password);
+            btn = this.addButton(_btnName, new AppMessage(AppMessage.HOME_SCREEN_PANEL));
         }
         // return the newly created button.
         return btn;
@@ -234,17 +236,15 @@ public class AppGui extends AppBase {
      */
     private Button registeringAccount(String _btnName, String _email, String _username, String _password) {
         // Call the addUser() in database class to see if the information entered by user can create a new account.
-        Boolean addingUser = this.db.addUser(_email, _username, _password);
+        User addingUser = this.db.addUser(_email, _username, _password);
         Button btn = new Button();
-        // if statement saying yes you can add this account.
-        if (addingUser == true) {
-            // Create a new User object with the entered in values.
-            this.user = new User(_email, _username, _password);
-            // Button will route you to the home screen panel.
-            btn = this.addButton(_btnName, new AppMessage(AppMessage.HOME_SCREEN_PANEL));
-            // If the information is already used go back to the registration panel.
-        } else {
+        // If statement for if null the account already exists so return to registration screen to re-enter information.
+        if (addingUser == null) {
             btn = this.addButton(_btnName, new AppMessage(AppMessage.REGISTRATION_PANEL));
+        // The account information is valid so create a new User with the entered information route user to home screen.
+        } else {
+            this.user = new User(_email, _username, _password);
+            btn = this.addButton(_btnName, new AppMessage(AppMessage.HOME_SCREEN_PANEL));
         }
         // Return the newly created button object.
         return btn;
@@ -321,4 +321,5 @@ public class AppGui extends AppBase {
         // Returns newly created GridPane.
         return gp;
     }
+    
 }
