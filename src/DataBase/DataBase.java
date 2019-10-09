@@ -1,5 +1,6 @@
 package DataBase;
 
+import UserModels.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,7 +35,7 @@ public class DataBase {
      * @param _password - Password checked to see if it exists.
      * @return - Return true if user does exists, false if they do not.
      */
-    public Boolean isUser(String _email, String _username, String _password) {
+    public User isUser(String _email, String _username, String _password) {
         try {
             // establishing the connection.
             con = DriverManager.getConnection(host, userName, passWord);
@@ -46,14 +47,14 @@ public class DataBase {
             rs = pst.executeQuery();
             // If statement for if there exists a user print the information matched and return true (true this user exists).
             if (rs.next()) {
+                User user = new User(_email, _username, _password);
                 System.out.println("Email, Username, and password matched");
                 con.close();
-                return true;
+                return user;
                 // Else the user does not exist in the database. Print that something didnt match and return false (False this user does not exist.).
             } else {
                 System.out.println("Something did not match");
                 con.close();
-                return false;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -70,7 +71,7 @@ public class DataBase {
      * @param _password - Password to be added in.
      * @return - Return true if added. False if not.
      */
-    public Boolean addUser(String _email, String _username, String _password) {
+    public User addUser(String _email, String _username, String _password) {
         try {
             // Establish a connection.
             con = DriverManager.getConnection(host, userName, passWord);
@@ -84,8 +85,8 @@ public class DataBase {
             if (rs.next()) {
                 System.out.println("Username or email is taken.");
                 con.close();
-                // Retrun false we cannot add this user.
-                return false;
+                // Return false we cannot add this user.
+                return null;
                 // Else the email and username eneterd are original and add the values to the database.
             } else {
                 String SQL2 = "INSERT INTO Users (Email, Username, Password) VALUES ('" + _email + "','" + _username + "','" + _password + "')";
@@ -93,12 +94,14 @@ public class DataBase {
                 stmt.executeUpdate(SQL2);
                 System.out.println("Email: " + _email + " Username: " + _username + " Password: " + _password + " added to DataBase");
                 con.close();
+                User user = new User(_email, _username, _password);
+                return user;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         // Return true we did add the values to the database.
-        return true;
+        return null;
     }
 
     /**
