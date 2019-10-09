@@ -212,11 +212,11 @@ public class AppGui extends AppBase {
      */
     private Button logInRegistration(String _btnName, String _email, String _username, String _password) {
         // Boolean for getting true or false from isUser() in DataBase class.
-        User isUser = this.db.isUser(_email, _username, _password);
+        Boolean isUser = this.db.isUser(_email, _username, _password);
         // Creating a new button.
         Button btn = new Button();
         // If statement for if the information = null return to log in screen.
-        if (isUser == null) {
+        if (isUser == false) {
             btn = this.addButton(_btnName, new AppMessage(AppMessage.LOG_IN_PANEL));
         // Else the user exists so create a new user object and route user to home screen.
         } else {
@@ -236,10 +236,10 @@ public class AppGui extends AppBase {
      */
     private Button registeringAccount(String _btnName, String _email, String _username, String _password) {
         // Call the addUser() in database class to see if the information entered by user can create a new account.
-        User addingUser = this.db.addUser(_email, _username, _password);
+        Boolean addingUser = this.db.addUser(_email, _username, _password);
         Button btn = new Button();
         // If statement for if null the account already exists so return to registration screen to re-enter information.
-        if (addingUser == null) {
+        if (addingUser == false) {
             btn = this.addButton(_btnName, new AppMessage(AppMessage.REGISTRATION_PANEL));
         // The account information is valid so create a new User with the entered information route user to home screen.
         } else {
