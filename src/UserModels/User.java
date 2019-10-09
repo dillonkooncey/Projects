@@ -3,57 +3,25 @@ package UserModels;
 import DataBase.DataBase;
 
 /**
- * USer class that defines user attributes and methods defining what users can
+ * User class that defines user attributes and methods defining what users can
  * do.
  *
  * @author Dillon, Amina, Kumar. Last updated: October 6, 2019.
  */
 public class User {
+
     // Data fields for User class.
     private String email;
     private String username;
     private String password;
     // DataBase object to give access to DataBase class.
     private DataBase db;
+
     // Constuctor to construct new User object.
     public User(String _email, String _username, String _password) {
         this.email = _email;
         this.username = _username;
         this.password = _password;
-    }
-
-    /**
-     * Method that will search and display all movies.
-     */
-    private void searchMovies() {
-        // Will be implemented by External API.
-    }
-
-    /**
-     * Method that will search movies by genre entered in by user.
-     *
-     * @param _genre - Genre wanted to be searched by user.
-     */
-    private void searchMovieGenre(String _genre) {
-        // Will be implemented by External API.
-    }
-
-    /**
-     * Method that will search for movies based on certain actor.
-     *
-     * @param _actorName
-     */
-    private void searchMovieActors(String _actorName) {
-        // Will be implemented by External API.
-    }
-
-    /**
-     * Method that will search movies by rating.
-     *
-     * @param _rating - The desired rating entered by user.
-     */
-    private void searchMovieRating(double _rating) {
-        // Will be implemented by External API.
     }
 
     /**
@@ -70,8 +38,10 @@ public class User {
      */
     private void changeEmail(String _email) {
         Boolean check = db.changeEmail(_email, this.getEmail());
-        if(check == true) {
+        if (check = true) {
             this.setEmail(_email);
+        } else {
+            System.out.println("Email is taken choose another email.");
         }
     }
 
@@ -82,8 +52,10 @@ public class User {
      */
     private void changeUsername(String _username) {
         Boolean check = db.changeUsername(_username, this.getUsername());
-        if(check == true) {
+        if (check = true) {
             this.setUsername(_username);
+        } else {
+            System.out.println("Username is taken choose another username.");
         }
     }
 
@@ -94,8 +66,10 @@ public class User {
      */
     private void changePassword(String _password) {
         Boolean check = db.changePassword(_password, this.getUsername(), this.getPassword());
-        if(check == true) {
+        if (check = true) {
             this.setPassword(_password);
+        } else {
+            System.out.println("Something went wrong try again.");
         }
     }
 
