@@ -14,21 +14,25 @@ public class User {
     private String email;
     private String username;
     private String password;
+    private String uuid;
+    private boolean active;
     // DataBase object to give access to DataBase class.
     private DataBase db;
 
     // Constuctor to construct new User object.
-    public User(String _email, String _username, String _password) {
+    public User(String _uuid, String _email, String _username, String _password, boolean _active) {
+        this.uuid = _uuid;
         this.email = _email;
         this.username = _username;
         this.password = _password;
+        this.active = _active;
     }
 
     /**
      * Method that allows user to delete their account.
      */
     private void deleteAccount() {
-        this.db.removeUser(this.getEmail(), this.getUsername(), this.getPassword());
+        
     }
 
     /**
@@ -37,12 +41,6 @@ public class User {
      * @param _email - New email for user.
      */
     private void changeEmail(String _email) {
-        Boolean check = db.changeEmail(_email, this.getEmail());
-        if (check = true) {
-            this.setEmail(_email);
-        } else {
-            System.out.println("Email is taken choose another email.");
-        }
     }
 
     /**
@@ -51,12 +49,6 @@ public class User {
      * @param _username - The new user name.
      */
     private void changeUsername(String _username) {
-        Boolean check = db.changeUsername(_username, this.getUsername());
-        if (check = true) {
-            this.setUsername(_username);
-        } else {
-            System.out.println("Username is taken choose another username.");
-        }
     }
 
     /**
@@ -65,12 +57,6 @@ public class User {
      * @param _password - The users new password.
      */
     private void changePassword(String _password) {
-        Boolean check = db.changePassword(_password, this.getUsername(), this.getPassword());
-        if (check = true) {
-            this.setPassword(_password);
-        } else {
-            System.out.println("Something went wrong try again.");
-        }
     }
 
     // =========== SETTERS ============= //
@@ -85,6 +71,10 @@ public class User {
     public void setPassword(String _password) {
         this.password = _password;
     }
+    
+    public void setActive(boolean _active) {
+        this.active = _active;
+    }
 
     // ============ GETTERS ============ //
     public String getEmail() {
@@ -97,5 +87,9 @@ public class User {
 
     public String getPassword() {
         return this.password;
+    }
+    
+    public boolean getActive() {
+        return this.active;
     }
 }
