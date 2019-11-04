@@ -1,13 +1,9 @@
 package App;
 
-import Events.AppBase;
 import Events.AppEvent;
 import Events.AppMessage;
 import Events.ListenerInterface;
 import GUI.AppGui;
-import UserModels.Actor;
-import UserModels.Movie;
-import UserModels.User;
 import javafx.stage.Stage;
 
 /**
@@ -20,7 +16,6 @@ public class AppController implements ListenerInterface {
 
     // Creates a new AppGui object to later on be used.
     protected AppGui gui;
-    protected AppBase activeModule = null;
 
     /**
      * Constructor to create new AppController object. Also adds the module as a
@@ -42,8 +37,6 @@ public class AppController implements ListenerInterface {
     private void logInPanel() {
         // Loads the logInPanel() in AppGui class.
         this.gui.logInPanel();
-        this.gui.removeListener(this.activeModule);
-        this.registerListenerPanel(new User());
     }
 
     /**
@@ -52,7 +45,6 @@ public class AppController implements ListenerInterface {
      */
     private void registrationPanel() {
         this.gui.registrationPanel();
-        this.registerListenerPanel(new User());
     }
 
     /**
@@ -61,13 +53,6 @@ public class AppController implements ListenerInterface {
      */
     private void homeScreenPanel() {
         this.gui.homeScreenPanel();
-        this.registerListenerPanel(new User());
-        
-    }
-    
-    private void registerListenerPanel(AppBase _newModule) {
-        this.activeModule = _newModule;
-        this.gui.addListener(_newModule);
     }
 
     /**
