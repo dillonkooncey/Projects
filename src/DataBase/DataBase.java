@@ -86,17 +86,17 @@ public class DataBase implements DataBaseInterface {
      * @return - Return the object and its attributes.
      */
     @Override
-    public boolean readObject(Map<String, String> _obj, String _table) {
+    public int readObject(Map<String, String> _obj, String _table) {
         // Send the passed in info to method to be checked if it exists in passed in table.
         int checked = this.checkRecords(_obj, _table);
         // If there exists a name in database with this information return true indicating the information exists.
         if (checked == 1) {
             System.out.println("Object exists in database.");
-            return true;
+            return 1;
             // Else the information did not exist so return false.
         } else {
             System.out.println("Object does not exist in database.");
-            return false;
+            return 0;
         }
     }
 
@@ -110,7 +110,7 @@ public class DataBase implements DataBaseInterface {
      * @return - True if the update was successful or false if not.
      */
     @Override
-    public Boolean updateObject(Map<String, String> _newInfo, String _uuid, String _table) {
+    public boolean updateObject(Map<String, String> _newInfo, String _uuid, String _table) {
         // First check to see if the desired information is already entered into 
         int checked = this.checkUpdate(_newInfo, _table);
         // If no object in the database exists with this information, change the info of the uuid.
