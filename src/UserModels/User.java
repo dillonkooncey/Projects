@@ -1,6 +1,8 @@
 package UserModels;
 
-import DataBase.DataBase;
+import DataBase.DataBaseTranslator;
+import Events.AppMessage;
+import java.util.HashMap;
 
 /**
  * User class that defines user attributes and methods defining what users can
@@ -9,68 +11,66 @@ import DataBase.DataBase;
  * @author Dillon, Amina, Kumar. Last updated: October 6, 2019.
  */
 public class User {
-
     // Data fields for User class.
     private String email;
     private String username;
     private String password;
-    // DataBase object to give access to DataBase class.
-    private DataBase db;
+    private String active;
+    // Give User access to DataBaseTranslator class.
+    private DataBaseTranslator translate;
 
     // Constuctor to construct new User object.
     public User(String _email, String _username, String _password) {
         this.email = _email;
         this.username = _username;
         this.password = _password;
+        this.active = "true";
     }
 
-    /**
-     * Method that allows user to delete their account.
-     */
-    private void deleteAccount() {
-        this.db.removeUser(this.getEmail(), this.getUsername(), this.getPassword());
-    }
-
-    /**
-     * Method that allows user to change their email.
-     *
-     * @param _email - New email for user.
-     */
-    private void changeEmail(String _email) {
-        Boolean check = db.changeEmail(_email, this.getEmail());
-        if (check = true) {
-            this.setEmail(_email);
+    public int save(String _email, String _username, String _password) {
+        // Create a HashMap and populate it with the information passed in from GUI and the string indicating what it is.
+        HashMap<String, String> map = new HashMap();
+        map.put("email", _email);
+        map.put("username", _username);
+        map.put("password", _password);
+        map.put("active", this.active);
+        // Int that equals the result of the DataBaseTranslator call.
+        int checkDb = this.translate.readObject(map, "users");
+        /*
+        If 1 is returned from the DataBaseTranslator class then the object 
+        exists so create a new User object with the attributes passed in from 
+        the GUI and return the int of the home screen panel.
+         */
+        if (checkDb == 1) {
+            User user = new User(_email, _username, _password);
+            return AppMessage.HOME_SCREEN_PANEL;
+            // Else the object didnt exist so return the int of the log in panel.
         } else {
-            System.out.println("Email is taken choose another email.");
+            return AppMessage.LOG_IN_PANEL;
         }
     }
 
-    /**
-     * Method that will change the users username.
-     *
-     * @param _username - The new user name.
-     */
-    private void changeUsername(String _username) {
-        Boolean check = db.changeUsername(_username, this.getUsername());
-        if (check = true) {
-            this.setUsername(_username);
+    public int createUser(String _email, String _username, String _password) {
+        // Create HashMap and populate it with the information passed in from GUI and the string indicating what it is.
+        HashMap<String, String> map = new HashMap();
+        map.put("email", _email);
+        map.put("username", _username);
+        map.put("password", _password);
+        // Int that equals the result of the DataBaseTranslator method call.
+        int checkDb = this.translate.createObject(map, "users");
+        /*
+        If the information entered does not match with an existing user in the database
+        create a new User object with the passed in information and return the int 
+        of the homescreen panel.
+         */
+        if (checkDb == 1) {
+            User user = new User(_email, _username, _password);
+            return AppMessage.HOME_SCREEN_PANEL;
+            // Else a user already existed with this information so return the int of the registration panel.
         } else {
-            System.out.println("Username is taken choose another username.");
+            return AppMessage.REGISTRATION_PANEL;
         }
-    }
 
-    /**
-     * Method that will change the users password.
-     *
-     * @param _password - The users new password.
-     */
-    private void changePassword(String _password) {
-        Boolean check = db.changePassword(_password, this.getUsername(), this.getPassword());
-        if (check = true) {
-            this.setPassword(_password);
-        } else {
-            System.out.println("Something went wrong try again.");
-        }
     }
 
     // =========== SETTERS ============= //

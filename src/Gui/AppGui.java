@@ -1,12 +1,9 @@
 package GUI;
 
-import DataBase.DataBase;
 import Events.AppEvent;
 import Events.AppMessage;
 import Events.AppBase;
 import UserModels.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -21,20 +18,17 @@ import javafx.stage.Stage;
 /**
  * Class that displays all GUI to the user.
  *
- * @author Dillon, Amina, Kumar. Last updated: October 6, 2019.
+ * @author Dillon. Last updated: November 4, 2019.
  */
 public class AppGui extends AppBase {
-
     // Create Stage object that will be built based on how panel is to be designed.
     private final Stage stage;
-    // Database object to give access to DataBase for database method calls.
-    private DataBase db;
-    // User object to give access to user for user method calls.
+    // User object to give GUI access to User class for User method calls.
     private User user;
 
     /**
      * Constructor to set the passed in stage from the AppController class to
-     * the defined stage.
+     * the defined stage and loads the loginPanel.
      *
      * @param _primaryStage - Stage passed in from AppController class.
      */
@@ -184,70 +178,17 @@ public class AppGui extends AppBase {
         grid.setHgap(5);
         // Building the labels and buttons for the GridPane object.
         Label homeScreenLbl = this.addLabel("Welcome to the Movie Finder App");
-        Button searchMoviesBtn = this.addButton("Search All Movies", new AppMessage(AppMessage.ALL_MOVIES_PANEL));
-        Button searchMovieGenreBtn = this.addButton("Search movies by genre", new AppMessage(AppMessage.MOVIE_GENRE_PANEL));
+        Button searchMoviesBtn = this.addButton("Search Movies", new AppMessage(AppMessage.ALL_MOVIES_PANEL));
         Button searchMovieActorsBtn = this.addButton("Search Movie Actors", new AppMessage(AppMessage.MOVIE_ACTORS_PANEL));
-        Button searchMovieRatingBtn = this.addButton("Search movies by rating", new AppMessage(AppMessage.MOVIE_RATING_PANEL));
         Button logOutBtn = this.addButton("Log out", new AppMessage(AppMessage.LOG_IN_PANEL));
         // Adding the labels and buttons to the gridpane object.
         grid.add(logOutBtn, 3, 0);
         grid.add(homeScreenLbl, 0, 1, 2, 1);
         grid.add(searchMoviesBtn, 0, 2);
-        grid.add(searchMovieGenreBtn, 1, 2);
         grid.add(searchMovieActorsBtn, 0, 3);
-        grid.add(searchMovieRatingBtn, 1, 3);
-
+        // Create the scene and return it.
         Scene scene = new Scene(grid, 450, 350);
         return scene;
-    }
-
-    /**
-     * Method that checks to see if a user exists in the database upon log in.
-     *
-     * @param _name - Name of the button.
-     * @param _email - The email entered in to be checked.
-     * @param _username - The username entered in to be checked.
-     * @param _password - The password entered in to be checked.
-     * @return - Return the button object and its message.
-     */
-    private Button logInRegistration(String _btnName, String _email, String _username, String _password) {
-        // Boolean for getting true or false from isUser() in DataBase class.
-        Boolean isUser = this.db.isUser(_email, _username, _password);
-        // Creating a new button.
-        Button btn = new Button();
-        // If statement for if the information = null return to log in screen.
-        if (isUser == false) {
-            btn = this.addButton(_btnName, new AppMessage(AppMessage.LOG_IN_PANEL));
-        // Else the user exists so create a new user object and route user to home screen.
-        } else {
-            this.user = new User(_email, _username, _password);
-            btn = this.addButton(_btnName, new AppMessage(AppMessage.HOME_SCREEN_PANEL));
-        }
-        // return the newly created button.
-        return btn;
-    }
-
-    /**
-     * Method that checks to see if the information entered in from user is an
-     * existing account. If so return to the registration scene, if not add this
-     * information to the database.
-     *
-     * @return - Button that routes you to different screen.
-     */
-    private Button registeringAccount(String _btnName, String _email, String _username, String _password) {
-        // Call the addUser() in database class to see if the information entered by user can create a new account.
-        Boolean addingUser = this.db.addUser(_email, _username, _password);
-        Button btn = new Button();
-        // If statement for if null the account already exists so return to registration screen to re-enter information.
-        if (addingUser == false) {
-            btn = this.addButton(_btnName, new AppMessage(AppMessage.REGISTRATION_PANEL));
-        // The account information is valid so create a new User with the entered information route user to home screen.
-        } else {
-            this.user = new User(_email, _username, _password);
-            btn = this.addButton(_btnName, new AppMessage(AppMessage.HOME_SCREEN_PANEL));
-        }
-        // Return the newly created button object.
-        return btn;
     }
 
     /**
