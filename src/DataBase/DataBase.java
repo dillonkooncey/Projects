@@ -142,11 +142,11 @@ public class DataBase implements DataBaseInterface {
      * @return - True if the account was deleted or false if not.
      */
     @Override
-    public Boolean deleteObject(String _uuid, String _table) {
+    public boolean deleteObject(String _uuid, String _table) {
         // Delete object from database at passed in uuid location.
-            String SQL = "update " + _table + " set active = 'false' where uuid = '" + _uuid + "'";
-            this.executeChange(SQL);
-            System.out.println("Object was deleted from database.");
+        String SQL = "update " + _table + " set active = 'false' where uuid = '" + _uuid + "'";
+        this.executeChange(SQL);
+        System.out.println("Object was deleted from database.");
         return true;
     }
 
@@ -158,15 +158,18 @@ public class DataBase implements DataBaseInterface {
      * @return - Return 0 if no records exists or 1 if there does.
      */
     private int checkRecords(Map<String, String> _obj, String _table) {
+        // Create two strings that will help construct the SQL query.
         String table = "SELECT * FROM " + _table;
         String values = " WHERE ";
-
+        // Loop though the hashmap to help create a new string that will help create SQL query.
         for (Map.Entry<String, String> _map : _obj.entrySet()) {
             values += "" + _map.getKey() + " = '" + _map.getValue() + "' and ";
         }
+        // Trim off the trailing " and "
         values = values.substring(0, values.length() - 5);
+        // Create an SQL statement of the previoulsy created strings concatenated together.
         String SQL = table + values;
-        System.out.println(SQL);
+        // Try catch for SQL actions
         try {
             // Prepared statement with the SQL string.
             this.pst = this.con.prepareStatement(SQL);
@@ -179,7 +182,6 @@ public class DataBase implements DataBaseInterface {
             } else {
                 return 0;
             }
-
         } catch (SQLException e) {
             System.out.println("There was an error: " + e.getMessage());
         }
@@ -212,7 +214,7 @@ public class DataBase implements DataBaseInterface {
             // at least one object exists with this information.
             if (this.rs.next()) {
                 return 1;
-            // Else 0 objects have this information.
+                // Else 0 objects have this information.
             } else {
                 return 0;
             }
@@ -228,7 +230,7 @@ public class DataBase implements DataBaseInterface {
      * @param _sql - The SQl to be inserted into the Database.
      */
     private void executeChange(String _sql) {
-        // 
+        // Execute the update in the DataBase.
         try {
             this.stmt = con.createStatement();
             this.stmt.executeUpdate(_sql);

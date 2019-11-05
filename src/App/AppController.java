@@ -10,11 +10,10 @@ import javafx.stage.Stage;
  * Class that acts as the controller for the Application. This class loads
  * panels and send the User to certain panels based on GUI commands.
  *
- * @author Dillon, Amina, Kumar. Last updated: October 6, 2019.
+ * @author Dillon. Last updated: November 4, 2019.
  */
 public class AppController implements ListenerInterface {
-
-    // Creates a new AppGui object to later on be used.
+    // Makes the controller aware of the GUI so it can route the user to different panels based on certain actions.
     protected AppGui gui;
 
     /**

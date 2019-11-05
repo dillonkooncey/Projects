@@ -5,10 +5,9 @@ import java.util.Map;
 /**
  * Class that translates objects into database.
  *
- * @author Dillon. Last updated: October 31, 2019.
+ * @author Dillon. Last updated: November 4, 2019.
  */
 public class DataBaseTranslator {
-    // Data field for DataBaseTranslator class.
     // Give access to the DataBaseInterface class.
     private static final DataBaseInterface connect = new DataBase();
 
