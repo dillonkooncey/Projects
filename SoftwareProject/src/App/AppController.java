@@ -54,6 +54,14 @@ public class AppController implements ListenerInterface {
     private void homeScreenPanel() {
         this.gui.homeScreenPanel();
     }
+    
+    private void searchMoviesPanel() {
+        this.gui.searchMoviePanel();
+    }
+    
+    private void searchActorsPanel() {
+        this.gui.searchActorsPanel();
+    }
 
     /**
      * Overridden method from the ListenerInterface that performs actions based
@@ -76,6 +84,14 @@ public class AppController implements ListenerInterface {
             case AppMessage.REGISTRATION_PANEL:
                 System.out.println("User is creating a new account.");
                 this.registrationPanel();
+                break;
+            case AppMessage.ALL_MOVIES_PANEL:
+                System.out.println("User is going to search movies panel.");
+                this.searchMoviesPanel();
+                break;
+            case AppMessage.ACTORS_PANEL:
+                System.out.println("User is going to the search actors panel.");
+                this.searchActorsPanel();
                 break;
             default:
                 System.out.println("Message not needed...");

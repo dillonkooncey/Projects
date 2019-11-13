@@ -17,7 +17,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -115,13 +114,6 @@ public class AppGui extends AppBase {
      * @return - Returns newly constructed scene object to loginPanel().
      */
     private Scene buildLogInPanel() {
-        // Creating a new Vbox object.
-        VBox vBox = new VBox();
-        // Creating an ImageView object for the App logo.
-        ImageView viewImage = this.createImageView("notfix.png");
-        // Setting the height and width for the image.
-        viewImage.setFitHeight(150);
-        viewImage.setFitWidth(600);
         // Creating the GridPane object that will be initially constructed in the buildGridPane().
         GridPane grid = this.buildGridPane();
         // Sets the verticle gap between rows in GridPane.
@@ -152,9 +144,8 @@ public class AppGui extends AppBase {
         grid.add(registerBtn, 1, 4);
         grid.add(logInBtn, 0, 4);
         // Populating the VBox object with the ImageView and GridPane objects.
-        vBox.getChildren().addAll(viewImage, grid);
         // Creating the scene.
-        Scene scene = new Scene(vBox, 600, 350);
+        Scene scene = new Scene(grid, 600, 350);
         // Returning the newly built scene object.
         return scene;
 
