@@ -1,54 +1,48 @@
 package UserModels;
 
+import Api.ApiTranslator;
 import Events.AppBase;
+import Events.AppMessage;
 import java.util.ArrayList;
 
 /**
- * Actor class that includes information such as Name, Gender, Movies acted in,
- * ect.
+ * Actor class that includes the list of movies that actor has acted in.
  *
  * @author Dillon. Last updated October 30, 2019.
  */
 public class Actor extends AppBase {
-
-    // Data fields for actors.
-    private int id;
-    private String department;
+    // DataField for the Actor class.
     private ArrayList<String> movies;
-
-    // Constructor for Actor object with no arguments passed in.
-    public Actor() {
-    }
+    // Give access to the ApiTranslator class for API calls.
+    private ApiTranslator translate;
 
     // Constructor for Actor Object.    
-    public Actor(int _id, String _department, ArrayList<String> _movies) {
-        this.id = _id;
-        this.department = _department;
+    public Actor(ArrayList<String> _movies) {
         this.movies = _movies;
     }
 
+    /**
+     * Method that based on a searched actors name will search the API for any
+     * movie that actor may have acted in.
+     *
+     * @param _actorName - Name of the actor searched by the User.
+     * @return - Return back to the Actors Panel.
+     */
+    public int findMovieList(String _actorName) {
+        /* Send the actor name to the API translator class to see if the actor 
+        exists in the API and if so get an arrayList of movies that they have acted in.*/
+        ArrayList<String> _movieList = this.translate.findMovieList(_actorName);
+        // Create a new Actor object with the ArrayList of movies.
+        Actor actor = new Actor(_movieList);
+        return AppMessage.ACTORS_PANEL;
+    }
+
     // =============== SETTERS ===============// 
-    public void setId(int _id) {
-        this.id = _id;
-    }
-
-    public void setDepartment(String _department) {
-        this.department = _department;
-    }
-
     public void setMovies(ArrayList<String> _movies) {
         this.movies = _movies;
     }
 
     // ================ GETTERS ===============//
-    public int getId() {
-        return this.id;
-    }
-
-    public String getDepartment() {
-        return this.department;
-    }
-
     public ArrayList<String> getMovies() {
         return this.movies;
     }
