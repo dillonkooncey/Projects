@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -351,19 +350,4 @@ public class AppGui extends AppBase {
         // Returns newly created GridPane.
         return gp;
     }
-    
-    /**
-     * Method that takes in a image path string and builds the ImageView object.
-     * @param _imagePath - The path of the image used.
-     * @return - The ImageView object with the desired picture.
-     */
-    private ImageView createImageView(String _imagePath) {
-        // Create the image object with the image path passed in.
-        Image img = new Image(_imagePath);
-        // Create the Imageview based on the image previouly created.
-        ImageView viewImage = new ImageView(img);
-        // Return the newly created ImageView object.
-        return viewImage;
-    }
-
 }
