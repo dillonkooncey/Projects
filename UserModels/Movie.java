@@ -8,7 +8,7 @@ import Events.AppMessage;
  * Movie class that stores information about a searched movie's title, overview,
  * rating, release date, and id.
  *
- * @author Dillon. Last updated: October 30 2019.
+ * @author Kumar, Amina. Last updated: October 30 2019.
  */
 public class Movie extends AppBase {
 
