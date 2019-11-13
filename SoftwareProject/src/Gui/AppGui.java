@@ -11,8 +11,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -82,12 +87,41 @@ public class AppGui extends AppBase {
         this.stage.show();
     }
 
+    public void searchMoviePanel() {
+        // Create a scene that will be built by the buildSearchMoviePanel().
+        Scene scene = this.buildSearchMoviePanel();
+        // Set the title of the stage.
+        this.stage.setTitle("Search Movies");
+        // Set the scene with the newly built scene.
+        this.stage.setScene(scene);
+        // Show the stage.
+        this.stage.show();
+    }
+
+    public void searchActorsPanel() {
+        // Call the buildSearchActorsPanel() to build the scene.
+        Scene scene = this.buildSearchActorsPanel();
+        // Set the title of the Stage.
+        this.stage.setTitle("Search Actors");
+        // Set the scene of the stage with the scene built in the buildSearchActorsPanel();
+        this.stage.setScene(scene);
+        // Show the stage.
+        this.stage.show();
+    }
+
     /**
      * Constructs the scene for the login screen. Model for log in panel.
      *
      * @return - Returns newly constructed scene object to loginPanel().
      */
     private Scene buildLogInPanel() {
+        // Creating a new Vbox object.
+        VBox vBox = new VBox();
+        // Creating an ImageView object for the App logo.
+        ImageView viewImage = this.createImageView("notfix.png");
+        // Setting the height and width for the image.
+        viewImage.setFitHeight(150);
+        viewImage.setFitWidth(600);
         // Creating the GridPane object that will be initially constructed in the buildGridPane().
         GridPane grid = this.buildGridPane();
         // Sets the verticle gap between rows in GridPane.
@@ -107,18 +141,20 @@ public class AppGui extends AppBase {
         Button registerBtn = this.addButton("Create new account", new AppMessage(AppMessage.REGISTRATION_PANEL));
         Button logInBtn = this.addButton("Log in", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
         // Organizing the GridPane objects labels.
-        grid.add(emailLbl, 0, 0);
-        grid.add(userNameLbl, 0, 1);
-        grid.add(passWordLbl, 0, 2);
+        grid.add(emailLbl, 0, 1);
+        grid.add(userNameLbl, 0, 2);
+        grid.add(passWordLbl, 0, 3);
         // Orgainzing the GridPane objects TextFields.
-        grid.add(emailTxt, 1, 0);
-        grid.add(userNameTxt, 1, 1);
-        grid.add(passWordTxt, 1, 2);
+        grid.add(emailTxt, 1, 1);
+        grid.add(userNameTxt, 1, 2);
+        grid.add(passWordTxt, 1, 3);
         // Orgainzing the GridPane objects buttons.
-        grid.add(registerBtn, 1, 3);
-        grid.add(logInBtn, 0, 3);
+        grid.add(registerBtn, 1, 4);
+        grid.add(logInBtn, 0, 4);
+        // Populating the VBox object with the ImageView and GridPane objects.
+        vBox.getChildren().addAll(viewImage, grid);
         // Creating the scene.
-        Scene scene = new Scene(grid, 450, 350);
+        Scene scene = new Scene(vBox, 600, 350);
         // Returning the newly built scene object.
         return scene;
 
@@ -161,7 +197,7 @@ public class AppGui extends AppBase {
         grid.add(registerBtn, 0, 5);
         grid.add(logOutBtn, 1, 5);
         // Creating a new Scene object and populating it with the newly build grid.
-        Scene scene = new Scene(grid, 450, 350);
+        Scene scene = new Scene(grid, 600, 350);
         // Returning the newly build scene.
         return scene;
     }
@@ -186,9 +222,70 @@ public class AppGui extends AppBase {
         grid.add(logOutBtn, 3, 0);
         grid.add(homeScreenLbl, 0, 1, 2, 1);
         grid.add(searchMoviesBtn, 0, 2);
-        grid.add(searchMovieActorsBtn, 0, 3);
+        grid.add(searchMovieActorsBtn, 1, 2);
         // Create the scene and return it.
-        Scene scene = new Scene(grid, 450, 350);
+        Scene scene = new Scene(grid, 600, 350);
+        return scene;
+    }
+
+    /**
+     * Method that builds the SearchMovie panel.
+     *
+     * @return - Returns scene of the movie panel.
+     */
+    private Scene buildSearchMoviePanel() {
+        // Building the GridPane object.
+        GridPane grid = this.buildGridPane();
+        // Setting the horizontal and verticle gap of the gridpane.
+        grid.setVgap(10);
+        grid.setHgap(5);
+        // Building the lables, textfields, and buttons for the grid pane.
+        Label searchMovieLbl = this.addLabel("Search Movie");
+        TextField searchMovieTxt = this.addTextField("Search");
+        Button search = this.addButton("Search", new AppMessage(AppMessage.ALL_MOVIES_PANEL));
+        Label movieRatingLbl = this.addLabel("Movie Rating");
+        TextField movieRatingTxt = this.addTextField("The movie rating is: Under Construction");
+        Button returnToHomeScreen = this.addButton("Return to home Screen", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
+        // Adding the Labels, TextFields, and Buttons to the GridPane.
+        grid.add(returnToHomeScreen, 3, 0);
+        grid.add(searchMovieLbl, 0, 1);
+        grid.add(searchMovieTxt, 1, 1);
+        grid.add(search, 2, 1);
+        grid.add(movieRatingLbl, 0, 2);
+        grid.add(movieRatingTxt, 1, 2);
+        // Building the Scene with the newly constructed GridPane and setting the size.
+        Scene scene = new Scene(grid, 600, 350);
+        // Return the scene.
+        return scene;
+    }
+
+    /**
+     * Method that builds the ActorPanel scene.
+     * @return - The actorsPanel scene.
+     */
+    private Scene buildSearchActorsPanel() {
+        // Cnstruct a GridPane object.
+        GridPane grid = this.buildGridPane();
+        // Set the verticle and horizontal gap.
+        grid.setVgap(10);
+        grid.setHgap(5);
+        // Build the labels, textfields, buttons, and ListView for the GridPane.
+        Label searchActorLbl = this.addLabel("Search for Actor");
+        TextField searchActorTxt = this.addTextField("Search");
+        Button search = this.addButton("Search", new AppMessage(AppMessage.ACTORS_PANEL));
+        Label listOfMoviesLbl = this.addLabel("List of movies acted in");
+        ListView listOfMoviesList = new ListView();
+        Button returnToHomeScreen = this.addButton("Return to home Screen", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
+        // Add all of the labels, textfields, buttons, and listview to the GridPane object.
+        grid.add(returnToHomeScreen, 3, 0);
+        grid.add(searchActorLbl, 0, 1);
+        grid.add(searchActorTxt, 1, 1);
+        grid.add(search, 2, 1);
+        grid.add(listOfMoviesLbl, 0, 2);
+        grid.add(listOfMoviesList, 1, 2);
+        // Populate the scene with the GridPane and set the size,
+        Scene scene = new Scene(grid, 600, 350);
+        // Return the newly created Scene.
         return scene;
     }
 
@@ -262,6 +359,20 @@ public class AppGui extends AppBase {
         // Sets the minimum size of GridPane.
         // Returns newly created GridPane.
         return gp;
+    }
+    
+    /**
+     * Method that takes in a image path string and builds the ImageView object.
+     * @param _imagePath - The path of the image used.
+     * @return - The ImageView object with the desired picture.
+     */
+    private ImageView createImageView(String _imagePath) {
+        // Create the image object with the image path passed in.
+        Image img = new Image(_imagePath);
+        // Create the Imageview based on the image previouly created.
+        ImageView viewImage = new ImageView(img);
+        // Return the newly created ImageView object.
+        return viewImage;
     }
 
 }
