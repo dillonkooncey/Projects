@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Tmdb class that searches the Tmdb API for movies and actors.
  *
- * @author Dillon. Last updated: November 4, 2019.
+ * @author Kumar, Anima. Last updated: November 4, 2019.
  */
 public class Tmdb implements ApiInterface {
     // Data fields for Tmdb class.
