@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Interface for external API's.
- * @author Dillon. Last updated: November 4, 2019.
+ * @author Kumar, Amina. Last updated: November 4, 2019.
  */
 public interface ApiInterface {
     // Methods that will search for movies and return the rating of that movie.
