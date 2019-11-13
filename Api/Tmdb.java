@@ -37,8 +37,10 @@ public class Tmdb implements ApiInterface {
      */
     @Override
     public ArrayList<String> searchActor(String _actor) {
+        // Send the String to the string builder method.
         String newString = this.searchStringBuilder(_actor);
-
+        // Build the string that will be sent to the API.
+        String searchString = Tmdb.baseUrl + "/3/search/person?api_key=" + Tmdb.apiKey + "&language=en-US&query=" + newString + "&page=1&include_adult=false";
         return null;
     }
 
