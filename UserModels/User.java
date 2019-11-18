@@ -5,10 +5,9 @@ import Events.AppMessage;
 import java.util.HashMap;
 
 /**
- * User class that defines user attributes and methods defining what users can
- * do.
+ * User class that defines user attributes and methods that create, save, and delete user information.
  *
- * @author Dillon, Amina, Kumar. Last updated: October 6, 2019.
+ * @author Dillon. Last updated: November 18, 2019.
  */
 public class User {
 
@@ -16,9 +15,10 @@ public class User {
     private String email;
     private String username;
     private String password;
-    private final String active;
+    private String active = "true";
     // Give User access to DataBaseTranslator class.
     private DataBaseTranslator translate;
+    
 
     // Constuctor to construct new User object.
     public User(String _email, String _username, String _password) {
@@ -48,11 +48,7 @@ public class User {
         map.put("active", this.active);
         // Int that equals the result of the DataBaseTranslator call.
         int checkDb = this.translate.readObject(map, "users");
-        /*
-        If 1 is returned from the DataBaseTranslator class then the object 
-        exists so create a new User object with the attributes passed in from 
-        the GUI and return the int of the home screen panel.
-         */
+        // Check and see if user does not exist then create a new one. Else dont.
         if (checkDb == 1) {
             User user = new User(_email, _username, _password);
             return AppMessage.HOME_SCREEN_PANEL;
