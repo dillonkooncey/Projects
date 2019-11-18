@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Database class to create, read, update, and delete objects.
  *
- * @author Dillon. Last updated October 23, 2019.
+ * @author Dillon. Last updated November 18, 2019.
  */
 public class DataBase implements DataBaseInterface {
 
@@ -105,7 +105,7 @@ public class DataBase implements DataBaseInterface {
      *
      * @param _newInfo - Key(what object wants changed) and value(the value of
      * the change)
-     * @param _uuid
+     * @param _username - The name of the username for the current user in the database.
      * @param _table - The table this object is stored in.
      * @return - True if the update was successful or false if not.
      */
