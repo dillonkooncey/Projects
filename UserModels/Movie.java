@@ -8,18 +8,20 @@ import Events.AppMessage;
  * Movie class that stores information about a searched movie's title, overview,
  * rating, release date, and id.
  *
- * @author Kumar, Amina. Last updated: October 30 2019.
+ * @author Dillon. Last updated: October 30 2019.
  */
 public class Movie extends AppBase {
 
     // Data fields for Movie Object.
     private double rating;
+    private String name;
     // Give access to the Apitranslator class for API calls.
     private ApiTranslator translate;
 
     // Constructor for Movie object.
-    public Movie(double _rating) {
+    public Movie(double _rating, String _name) {
         this.rating = _rating;
+        this.name = _name;
     }
 
     /**
@@ -33,7 +35,7 @@ public class Movie extends AppBase {
         // Get the rating of the movie searched by the User and store it as a double.
         double movieRating = this.translate.findMovieRating(_movieName);
         // Create a new Movie object with the double value of the searched movie.
-        Movie movie = new Movie(movieRating);
+        Movie movie = new Movie(movieRating, _movieName);
         // Return back to the movie rating panel.
         return AppMessage.MOVIE_RATING_PANEL;
     }
@@ -43,8 +45,16 @@ public class Movie extends AppBase {
         this.rating = _rating;
     }
 
+    public void setMovieName(String _movieName) {
+        this.name = _movieName;
+    }
+
     // ========== GETTERS ==========//
     public double getRating() {
         return this.rating;
+    }
+
+    public String getMovieName() {
+        return this.name;
     }
 }
