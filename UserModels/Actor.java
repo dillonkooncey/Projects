@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Actor class that includes the list of movies that actor has acted in.
  *
- * @author Dillon. Last updated October 30, 2019.
+ * @author Dillon. Last updated November 18, 2019.
  */
 public class Actor extends AppBase {
     // DataField for the Actor class.
