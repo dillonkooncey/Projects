@@ -8,7 +8,7 @@ import Events.AppMessage;
  * Movie class that stores information about a searched movie's title, overview,
  * rating, release date, and id.
  *
- * @author Dillon. Last updated: November 18, 2019.
+ * @author Dillon. Last updated: October 30 2019.
  */
 public class Movie extends AppBase {
 
@@ -16,7 +16,7 @@ public class Movie extends AppBase {
     private double rating;
     private String name;
     // Give access to the Apitranslator class for API calls.
-    private ApiTranslator translate;
+    private ApiTranslator translate = new ApiTranslator();
 
     // Constructor for Movie object.
     public Movie(double _rating, String _name) {
