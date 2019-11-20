@@ -5,7 +5,8 @@ import Events.AppMessage;
 import java.util.HashMap;
 
 /**
- * User class that defines user attributes and methods that create, save, and delete user information.
+ * User class that defines user attributes and methods defining what users can
+ * do.
  *
  * @author Dillon. Last updated: November 18, 2019.
  */
@@ -17,8 +18,7 @@ public class User {
     private String password;
     private String active = "true";
     // Give User access to DataBaseTranslator class.
-    private DataBaseTranslator translate;
-    
+    private final DataBaseTranslator translate = new DataBaseTranslator();
 
     // Constuctor to construct new User object.
     public User(String _email, String _username, String _password) {
@@ -77,11 +77,7 @@ public class User {
         map.put("password", _password);
         // Int that equals the result of the DataBaseTranslator method call.
         int checkDb = this.translate.createObject(map, "users");
-        /*
-        If the information entered does not match with an existing user in the database
-        create a new User object with the passed in information and return the int 
-        of the homescreen panel.
-         */
+        // If checkDb = 1, a new User object has been created in the database so create a new User object and route to homescreen panel.
         if (checkDb == 1) {
             User user = new User(_email, _username, _password);
             return AppMessage.HOME_SCREEN_PANEL;
@@ -91,7 +87,34 @@ public class User {
         }
 
     }
-    
+
+    /**
+     * Method that takes in the attribute the user wants changed and the value.
+     * Then checks the DataBase to see if the new value desired is already in
+     * the database or not. If not then the attribute is changed. If so the
+     * request is denied.
+     *
+     * @param _attribute - The attribute the User wants changed.
+     * @param _value - The value of the new attribute
+     * @return - Int indicating whether or not the information was changed or
+     * not.
+     */
+    public int updateInfo(String _attribute, String _value) {
+        // Create HashMap object with the attribute as the key and the value as the value.
+        HashMap<String, String> map = new HashMap();
+        map.put(_attribute, _value);
+        // Boolean indicating true if change was made or false if not.
+        boolean checkDb = this.translate.updateObject(map, this.getUsername(), "users");
+        // If statement for handling true or false from the database.
+        if (checkDb == true) {
+            // How will i know what part of the User object here?
+            return AppMessage.HOME_SCREEN_PANEL;
+            // The information already exists so the update can not be performed.
+        } else {
+            return 0;
+        }
+    }
+
     /**
      * Method that deletes an account based on the username of the current
      * account.
@@ -106,9 +129,9 @@ public class User {
             this.setEmail(null);
             this.setUsername(null);
             this.setPassword(null);
-
+            // Object is deleted by garbage collector so return to Log in panel.
             return AppMessage.LOG_IN_PANEL;
-            // Object was not deleted so return to the Home screen panel with your account information.
+            // Object was not deleted so return to the Home screen panel with the account information.
         } else {
             return AppMessage.HOME_SCREEN_PANEL;
         }
