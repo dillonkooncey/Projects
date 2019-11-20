@@ -4,18 +4,20 @@ import Api.ApiTranslator;
 import Events.AppBase;
 import Events.AppMessage;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Actor class that includes the list of movies that actor has acted in.
  *
- * @author Dillon. Last updated November 18, 2019.
+ * @author Dillon. Last updated October 30, 2019.
  */
 public class Actor extends AppBase {
+
     // DataField for the Actor class.
     private ArrayList<String> movies;
     private String name;
     // Give access to the ApiTranslator class for API calls.
-    private ApiTranslator translate;
+    private ApiTranslator translate = new ApiTranslator();
 
     // Constructor for Actor Object.    
     public Actor(ArrayList<String> _movies, String _name) {
@@ -39,6 +41,28 @@ public class Actor extends AppBase {
         return AppMessage.ACTORS_PANEL;
     }
 
+    /**
+     * Method that sorts the ArrayList of movies into Ascending order.
+     *
+     * @return - The ascending order of Movie titles.
+     */
+    public ArrayList<String> sortAscendingOrder() {
+        // Use the collections class to sort the movies ArrayList.
+        Collections.sort(this.getMovies());
+        // Return the newly sorted arraylist.
+        return this.getMovies();
+    }
+
+    /**
+     * Method that sorts the ArrayList of movies into descending order.
+     *
+     * @return - THe descending order of movie titles.
+     */
+    public ArrayList<String> sortDescendingOrder() {
+        Collections.sort(this.getMovies(), Collections.reverseOrder());
+        return this.getMovies();
+    }
+
     // =============== SETTERS ===============// 
     public void setMovies(ArrayList<String> _movies) {
         this.movies = _movies;
@@ -47,11 +71,12 @@ public class Actor extends AppBase {
     public void setActorName(String _name) {
         this.name = _name;
     }
+
     // ================ GETTERS ===============//
     public ArrayList<String> getMovies() {
         return this.movies;
     }
-    
+
     public String getActorName() {
         return this.name;
     }
