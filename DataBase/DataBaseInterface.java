@@ -9,9 +9,9 @@ import java.util.Map;
  */
 public interface DataBaseInterface {
 
-    public abstract int createObject(Map<String, String> _attributes, String _table);
+    public abstract boolean createObject(Map<String, String> _attributes, String _table);
 
-    public abstract int readObject(Map<String, String> _keyValuePairs, String _table);
+    public abstract boolean readObject(Map<String, String> _keyValuePairs, String _table);
 
     public abstract boolean updateObject(Map<String, String> _keyValuePairs, String _username, String _table);
 
