@@ -74,7 +74,6 @@ public class AppController implements ListenerInterface {
     public void messageRecieved(AppEvent _event) {
         switch (_event.getMessage().getMessageCode()) {
             case AppMessage.LOG_IN_PANEL:
-                System.out.println("User has signed out and now going to Log in page.");
                 this.logInPanel();
                 break;
             case AppMessage.HOME_SCREEN_PANEL:
