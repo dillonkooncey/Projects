@@ -32,13 +32,13 @@ public class Actor extends AppBase {
      * @param _actorName - Name of the actor searched by the User.
      * @return - Return back to the Actors Panel.
      */
-    public int findMovieList(String _actorName) {
+    public static boolean findMovieList(String _actorName) {
         /* Send the actor name to the API translator class to see if the actor 
         exists in the API and if so get an arrayList of movies that they have acted in.*/
-        ArrayList<String> _movieList = this.translate.findMovieList(_actorName);
+        ArrayList<String> _movieList = ApiTranslator.findMovieList(_actorName);
         // Create a new Actor object with the ArrayList of movies.
         Actor actor = new Actor(_movieList, _actorName);
-        return AppMessage.ACTORS_PANEL;
+        return true;
     }
 
     /**
