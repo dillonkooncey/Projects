@@ -20,7 +20,7 @@ public class DataBaseTranslator {
      * @param _table - The table the object will be stored in.
      * @return - Integer returned from DataBase call.
      */
-    public int createObject(Map<String, String> _obj, String _table) {
+    public boolean createObject(Map<String, String> _obj, String _table) {
         return DataBaseTranslator.connect.createObject(_obj, _table);
     }
 
@@ -32,7 +32,7 @@ public class DataBaseTranslator {
      * @param _table - The table the information is located in.
      * @return - The integer returned from DataBase call.
      */
-    public int readObject(Map<String, String> _map, String _table) {
+    public boolean readObject(Map<String, String> _map, String _table) {
         return DataBaseTranslator.connect.readObject(_map, _table);
     }
 
