@@ -3,6 +3,7 @@ package GUI;
 import Events.AppEvent;
 import Events.AppMessage;
 import Events.AppBase;
+import UserModels.ModelController;
 import UserModels.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,8 +26,6 @@ public class AppGui extends AppBase {
 
     // Create Stage object that will be built based on how panel is to be designed.
     private final Stage stage;
-    // User object to give GUI access to User class for User method calls.
-    private User user;
 
     /**
      * Constructor to set the passed in stage from the AppController class to
@@ -120,15 +119,21 @@ public class AppGui extends AppBase {
         // Creating the email label and textfield which will be built by helper methods.
         Label emailLbl = this.addLabel("Email: ");
         TextField emailTxt = this.addTextField("Email");
+        // Saving the text entered into the email textfield as a string.
+        String email = emailTxt.getText();
         // Creating the username label and Textfield which will be build helper methods.
         Label userNameLbl = this.addLabel("Username: ");
         TextField userNameTxt = this.addTextField("Username");
+        // Saving the text entered into the username textfield as a string.
+        String username = userNameTxt.getText();
         // Creating the password label and textfield which will be built by helper methods.
         Label passWordLbl = this.addLabel("Password: ");
         TextField passWordTxt = this.addTextField("Password");
+        // Saving the text entered into the password textfield as a string.
+        String password = passWordTxt.getText();
         // Creating the "create new account" and "log in" button.
         Button registerBtn = this.addButton("Create new account", new AppMessage(AppMessage.REGISTRATION_PANEL));
-        Button logInBtn = this.addButton("Log in", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
+        Button logInBtn = this.addButton("Log in", new AppMessage(ModelController.verifyUser(email, username, password)));
         // Organizing the GridPane objects labels.
         grid.add(emailLbl, 0, 1);
         grid.add(userNameLbl, 0, 2);
@@ -164,14 +169,17 @@ public class AppGui extends AppBase {
         // Label and TextField for email information.
         Label emailLbl = this.addLabel("Email: ");
         TextField emailTxt = this.addTextField("Email");
+        String email = emailTxt.getText();
         // Label and TextField for username information.
         Label userNameLbl = this.addLabel("Username: ");
         TextField userNameTxt = this.addTextField("Username");
+        String username = userNameTxt.getText();
         // Label and TextField for Password information.
         Label passWordLbl = this.addLabel("Password: ");
         TextField passWordTxt = this.addTextField("Password");
+        String password = passWordTxt.getText();
         // Buttons for registering the account and exiting to the log in screen.
-        Button registerBtn = this.addButton("Submit", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
+        Button registerBtn = this.addButton("Submit", new AppMessage(ModelController.createUser(email, username, password)));
         Button logOutBtn = this.addButton("Return to log in screen", new AppMessage(AppMessage.LOG_IN_PANEL));
         // Organizing the Labels in the GridPane object.
         grid.add(registration, 0, 0, 2, 1);
@@ -202,7 +210,7 @@ public class AppGui extends AppBase {
         grid.setVgap(5);
         grid.setHgap(5);
         // Building the labels and buttons for the GridPane object.
-        Label homeScreenLbl = this.addLabel("Welcome to the Movie Finder App");
+        Label homeScreenLbl = this.addLabel("Welcome ");
         Button searchMoviesBtn = this.addButton("Search Movies", new AppMessage(AppMessage.ALL_MOVIES_PANEL));
         Button searchMovieActorsBtn = this.addButton("Search Movie Actors", new AppMessage(AppMessage.ACTORS_PANEL));
         Button logOutBtn = this.addButton("Log out", new AppMessage(AppMessage.LOG_IN_PANEL));
