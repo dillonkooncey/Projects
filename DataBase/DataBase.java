@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Database class to create, read, update, and delete objects.
  *
- * @author Dillon. Last updated November 18, 2019.
+ * @author Dillon. Last updated October 23, 2019.
  */
 public class DataBase implements DataBaseInterface {
 
@@ -41,15 +41,11 @@ public class DataBase implements DataBaseInterface {
      * @return - 1 if the object was created and 0 if not.
      */
     @Override
-    public int createObject(Map<String, String> _attributes, String _table) {
-        /*
-        first check to see if the information exists in the database.
-        If not, create the new object and return 1 indicating the object was created.
-        If so, return 0 indicating the object couldnt be created.
-         */
-        int recordSearch = this.checkRecords(_attributes, _table);
+    public boolean createObject(Map<String, String> _attributes, String _table) {
+        // Check to see if information exists in the database.
+        boolean recordSearch = this.checkRecords(_attributes, _table);
         // If to insert into table.
-        if (recordSearch == 0) {
+        if (recordSearch == false) {
             // Strings to create the SQL statement.
             String table = "INSERT INTO " + _table;
             String column = "(";
@@ -69,12 +65,10 @@ public class DataBase implements DataBaseInterface {
             String SQL = table + column + values;
             // Creating an integer that will represent how many object with the entered attributes exist in the database.
             this.executeChange(SQL);
-            System.out.println("Object added to " + _table + " table");
-            return 1;
+            return true;
             // Object already exists and was not added to table.
         } else {
-            System.out.println("Object already exists in the " + _table + " table");
-            return 0;
+            return false;
         }
     }
 
@@ -86,17 +80,15 @@ public class DataBase implements DataBaseInterface {
      * @return - Return the object and its attributes.
      */
     @Override
-    public int readObject(Map<String, String> _obj, String _table) {
+    public boolean readObject(Map<String, String> _obj, String _table) {
         // Send the passed in info to method to be checked if it exists in passed in table.
-        int checked = this.checkRecords(_obj, _table);
+        boolean checked = this.checkRecords(_obj, _table);
         // If there exists a name in database with this information return true indicating the information exists.
-        if (checked == 1) {
-            System.out.println("Object exists in database.");
-            return 1;
+        if (checked == true) {
+            return true;
             // Else the information did not exist so return false.
         } else {
-            System.out.println("Object does not exist in database.");
-            return 0;
+            return false;
         }
     }
 
@@ -146,7 +138,6 @@ public class DataBase implements DataBaseInterface {
         // Delete object from database at passed in uuid location.
         String SQL = "update " + _table + " set active = 'false' where username = '" + _username + "'";
         this.executeChange(SQL);
-        System.out.println("Object was deleted from database.");
         return true;
     }
 
@@ -157,7 +148,7 @@ public class DataBase implements DataBaseInterface {
      * @param _table - The table to be searched.
      * @return - Return 0 if no records exists or 1 if there does.
      */
-    private int checkRecords(Map<String, String> _obj, String _table) {
+    private boolean checkRecords(Map<String, String> _obj, String _table) {
         // Create two strings that will help construct the SQL query.
         String table = "SELECT * FROM " + _table;
         String values = " WHERE ";
@@ -175,17 +166,17 @@ public class DataBase implements DataBaseInterface {
             this.pst = this.con.prepareStatement(SQL);
             // Create a result set with the SQL search.
             this.rs = this.pst.executeQuery();
-            // If a record exists with this information return 1 indicating 1 object
+            // If a record exists with this information return true indicating 1 object has this information.
             if (this.rs.next()) {
-                return 1;
+                return true;
                 // Else return 0 indicating 0 objects have this data.
             } else {
-                return 0;
+                return false;
             }
         } catch (SQLException e) {
             System.out.println("There was an error: " + e.getMessage());
         }
-        return 0;
+        return true;
     }
 
     /**
