@@ -3,7 +3,7 @@ package Events;
 /**
  * Class that defines the possible messages given by events from the user.
  *
- * @author Dillon, Amina, Kumar. Last updated: October 6, 2019.
+ * @author Dillon. Last updated: December 1, 2019.
  */
 public class AppMessage {
 
@@ -15,6 +15,8 @@ public class AppMessage {
     public static final int MOVIE_RATING_PANEL = 5;
     public static final int ACTORS_PANEL = 6;
     public static final int OPTIONS_PANEL = 7;
+    public static final int ACCOUNT_RECOVERY = 8;
+    public static final int DELETE_ACCOUNT = 9;
 
     // Create integer to be assigned to message value passed into constructor.
     private final int thisMessage;
