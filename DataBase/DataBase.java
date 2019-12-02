@@ -9,16 +9,16 @@ import java.sql.Statement;
 import java.util.Map;
 
 /**
- * Database class to create, read, update, and delete objects.
+ * Database class to create, read, update, delete, and reactivate objects.
  *
- * @author Dillon. Last updated October 23, 2019.
+ * @author Dillon. Last updated December 1, 2019.
  */
 public class DataBase implements DataBaseInterface {
 
     // Data fields for DataBase class.
     private final String host = "jdbc:derby://localhost:1527/dillonkooncey";
-    private final String userName = "dckoonce";
-    private final String passWord = "November21998";
+    private final String userName = "root";
+    private final String passWord = "root";
     private Connection con;
     private ResultSet rs;
     private PreparedStatement pst;
@@ -97,7 +97,8 @@ public class DataBase implements DataBaseInterface {
      *
      * @param _newInfo - Key(what object wants changed) and value(the value of
      * the change)
-     * @param _username - The name of the username for the current user in the database.
+     * @param _username - The name of the username for the current user in the
+     * database.
      * @param _table - The table this object is stored in.
      * @return - True if the update was successful or false if not.
      */
@@ -139,6 +140,40 @@ public class DataBase implements DataBaseInterface {
         String SQL = "update " + _table + " set active = 'false' where username = '" + _username + "'";
         this.executeChange(SQL);
         return true;
+    }
+
+    /**
+     * Method that searches Database for a deactivated account with the
+     * information passed in from the user in the specified table.
+     *
+     * @param _map - HashMap of the user information.
+     * @param _table - Table to be searched
+     * @return - True if account was reactivated, false if not.
+     */
+    @Override
+    public boolean reactivateAccount(Map<String, String> _map, String _table) {
+        // Check the records for the deactivated account.
+        boolean checkRecords = this.checkRecords(_map, _table);
+        // If the deactivated account was found, activate it and return true signifying activation.
+        if (checkRecords == true) {
+            // Create the SQL string.
+            String update = "update " + _table;
+            String changeActive = " set active = 'true' where ";
+            String st = "";
+            // Loop through the HashMap to complete the search string.
+            for (Map.Entry<String, String> entry : _map.entrySet()) {
+                st += entry.getKey() + " = '" + entry.getValue() + "' and ";
+            }
+            // Trim off the last ", and".
+            st = st.substring(0, st.length() - 5);
+            String SQL = update + changeActive + st;
+            System.out.println(SQL);
+            this.executeChange(SQL);
+            return true;
+            // Else the deactivated account was not found so return false;
+        } else {
+            return false;
+        }
     }
 
     /**
