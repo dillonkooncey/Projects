@@ -2,12 +2,13 @@ package UserModels;
 
 import DataBase.DataBaseTranslator;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User class that defines user attributes and methods defining what users can
  * do.
  *
- * @author Dillon. Last updated: November 18, 2019.
+ * @author Dillon. Last updated: December 1, 2019.
  */
 public class User {
 
@@ -15,9 +16,14 @@ public class User {
     private String email;
     private String username;
     private String password;
-    private String active = "true";
+    private String active;
     private static DataBaseTranslator translate = new DataBaseTranslator();
-    
+
+    // Overloaded constructor to allow for an empty object.
+    public User() {
+
+    }
+
     // Constuctor to construct new User object.
     public User(String _email, String _username, String _password) {
         this.email = _email;
@@ -28,8 +34,8 @@ public class User {
 
     /**
      * Method that checks to see if an object is in the database. If so it saves
-     * the information passed in as a new object and returns a AppMessage int.
-     * If not it returns a different AppMessage int.
+     * the information passed in as a new object and returns a AppMessage
+     * integer. If not it returns a different AppMessage integer.
      *
      * @param _email - Email passed in from login
      * @param _username - Username passed in from login
@@ -92,19 +98,45 @@ public class User {
      * the database or not. If not then the attribute is changed. If so the
      * request is denied.
      *
-     * @param _attribute - The attribute the User wants changed.
-     * @param _value - The value of the new attribute
+     * @param _email - Email String passed in from GUI.
+     * @param _username - Username String Passed in from GUI.
+     * @param _password - PasswordString passed in from GUI.
      * @return - True of object was updated and false if not.
      */
-    public boolean updateInfo(String _attribute, String _value) {
+    public boolean updateInfo(String _email, String _username, String _password) {
         // Create HashMap object with the attribute as the key and the value as the value.
         HashMap<String, String> map = new HashMap();
-        map.put(_attribute, _value);
+        map.put("email", _email);
+        map.put("username", _username);
+        map.put("password", _password);
+        // Loop through the HashMap for invalid update situations.
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            // If the value is empty remove from the HashMap.
+            if (entry.getValue().isEmpty()) {
+                map.remove(entry.getValue());
+                // If the value entered already matches the users current information then remove from the HashMap.
+            } else if (entry.getValue().matches(this.getEmail()) || entry.getValue().matches(this.getPassword()) || entry.getValue().matches(this.getUsername())) {
+                map.remove(entry.getValue());
+            }
+        }
         // Boolean indicating true if change was made or false if not.
         boolean checkDb = translate.updateObject(map, this.getUsername(), "users");
         // If statement for handling true or false from the database.
         if (checkDb == true) {
-            // How will i know what part of the User object here?
+            // Loop through the HashMap one more time to see which attribute needs to be updated.
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                // If the key is email then update the email for the User object.
+                if (entry.getKey().matches("email")) {
+                    this.setEmail(entry.getValue());
+                    // If the key is the username then update the username for the User object.
+                } else if (entry.getKey().matches("username")) {
+                    this.setUsername(entry.getValue());
+                    // Else the password needs to be updated for the User object.
+                } else {
+                    this.setPassword(entry.getValue());
+                }
+            }
+            // Return true to signify the update has occured.
             return true;
             // The information already exists so the update can not be performed.
         } else {
@@ -129,6 +161,34 @@ public class User {
             // Object is deleted by garbage collector so return to Log in panel.
             return true;
             // Object was not deleted so return to the Home screen panel with the account information.
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Method that allows user to reactive their account if they accidentally
+     * deleted it.
+     *
+     * @param _email - Email of deactivated account.
+     * @param _username - Username of deactivated account.
+     * @param _password - Password of Deactivated account.
+     * @return - True of account was actived, false if not.
+     */
+    public boolean reactivateAccount(String _email, String _username, String _password) {
+        // Build a hashmap of the information passed in from user.
+        HashMap<String, String> map = new HashMap();
+        map.put("email", _email);
+        map.put("username", _username);
+        map.put("password", _password);
+        map.put("active", "false");
+        // Send information to translator to be checked by Database.
+        boolean checkDeactivated = translate.reactivateAccount(map, "users");
+        // If account was reactivated the create a new User object with that information and return true.
+        if (checkDeactivated == true) {
+            User user = new User(_email, _username, _password);
+            return true;
+            // Else the account was not reactivated so return false;
         } else {
             return false;
         }
