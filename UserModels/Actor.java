@@ -2,14 +2,13 @@ package UserModels;
 
 import Api.ApiTranslator;
 import Events.AppBase;
-import Events.AppMessage;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
  * Actor class that includes the list of movies that actor has acted in.
  *
- * @author Dillon. Last updated October 30, 2019.
+ * @author Dillon. Last updated December 1, 2019.
  */
 public class Actor extends AppBase {
 
@@ -18,6 +17,11 @@ public class Actor extends AppBase {
     private String name;
     // Give access to the ApiTranslator class for API calls.
     private ApiTranslator translate = new ApiTranslator();
+
+    // Overloaded constructor to allow for an empty object.
+    public Actor() {
+
+    }
 
     // Constructor for Actor Object.    
     public Actor(ArrayList<String> _movies, String _name) {
@@ -33,8 +37,7 @@ public class Actor extends AppBase {
      * @return - Return back to the Actors Panel.
      */
     public static boolean findMovieList(String _actorName) {
-        /* Send the actor name to the API translator class to see if the actor 
-        exists in the API and if so get an arrayList of movies that they have acted in.*/
+        // Send the actor name to the API to get a list of moives acted in if they exist in DataBase.
         ArrayList<String> _movieList = ApiTranslator.findMovieList(_actorName);
         // Create a new Actor object with the ArrayList of movies.
         Actor actor = new Actor(_movieList, _actorName);
@@ -56,7 +59,7 @@ public class Actor extends AppBase {
     /**
      * Method that sorts the ArrayList of movies into descending order.
      *
-     * @return - THe descending order of movie titles.
+     * @return - The descending order of movie titles.
      */
     public ArrayList<String> sortDescendingOrder() {
         Collections.sort(this.getMovies(), Collections.reverseOrder());
