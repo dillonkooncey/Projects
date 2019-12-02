@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  * Class that acts as the controller for the Application. This class loads
  * panels and send the User to certain panels based on GUI commands.
  *
- * @author Dillon. Last updated: November 4, 2019.
+ * @author Dillon. Last updated: December 1, 2019.
  */
 public class AppController implements ListenerInterface {
 
@@ -48,17 +48,44 @@ public class AppController implements ListenerInterface {
     }
 
     /**
+     * Method to show the account recovery panel in the AppGui class.
+     */
+    private void accountRecoveryPanel() {
+        this.gui.accountRecoveryPanel();
+    }
+
+    /**
      * Method to load the homeScreenPanel in AppGui class. Controller for home
      * screen panel.
      */
     private void homeScreenPanel() {
         this.gui.homeScreenPanel();
     }
-    
+
+    /**
+     * Method to show the options panel in the AppGui class.
+     */
+    private void optionsPanel() {
+        this.gui.optionsPanel();
+    }
+
+    /**
+     * Method to show the delete account panel in the AppGui class.
+     */
+    private void deleteAccountPanel() {
+        this.gui.deleteAccountPanel();
+    }
+
+    /**
+     * Method to show the movies panel in the AppGui class.
+     */
     private void searchMoviesPanel() {
         this.gui.searchMoviePanel();
     }
-    
+
+    /**
+     * Method to show the Actors panel in the AppGui class.
+     */
     private void searchActorsPanel() {
         this.gui.searchActorsPanel();
     }
@@ -91,6 +118,18 @@ public class AppController implements ListenerInterface {
             case AppMessage.ACTORS_PANEL:
                 System.out.println("User is going to the search actors panel.");
                 this.searchActorsPanel();
+                break;
+            case AppMessage.OPTIONS_PANEL:
+                System.out.println("User is going to the options panel.");
+                this.optionsPanel();
+                break;
+            case AppMessage.ACCOUNT_RECOVERY:
+                System.out.println("User is going to account recovery panel.");
+                this.accountRecoveryPanel();
+                break;
+            case AppMessage.DELETE_ACCOUNT:
+                System.out.println("User is going to delete account panel.");
+                this.deleteAccountPanel();
                 break;
             default:
                 System.out.println("Message not needed...");
