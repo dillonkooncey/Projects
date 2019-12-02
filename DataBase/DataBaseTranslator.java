@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Class that translates objects into database.
  *
- * @author Dillon. Last updated: November 4, 2019.
+ * @author Dillon. Last updated: December 1, 2019.
  */
 public class DataBaseTranslator {
 
@@ -50,14 +50,26 @@ public class DataBaseTranslator {
     }
 
     /**
-     * Method that sends the uuid and table name to the database to delete an
-     * object.
+     * Method that sends the username and table name to the database to delete
+     * an object.
      *
-     * @param _uuid - the uuid of that particular user.
+     * @param _username - the username of that particular user.
      * @param _table - The table in which the object is located in.
      * @return - Value returned from DataBase call.
      */
-    public boolean deleteObject(String _uuid, String _table) {
-        return DataBaseTranslator.connect.deleteObject(_uuid, _table);
+    public boolean deleteObject(String _username, String _table) {
+        return DataBaseTranslator.connect.deleteObject(_username, _table);
+    }
+
+    /**
+     * Method that sends informaiton from User class to Database to see if
+     * account can be reactivated.
+     *
+     * @param _map - HashMap of information to be searched through.
+     * @param _table - Name of Table to be searched.
+     * @return - True if account was reactivated, false if not.
+     */
+    public boolean reactivateAccount(Map<String, String> _map, String _table) {
+        return DataBaseTranslator.connect.reactivateAccount(_map, _table);
     }
 }
