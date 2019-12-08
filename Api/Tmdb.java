@@ -118,6 +118,7 @@ public class Tmdb implements ApiInterface {
         } catch (Exception e) {
 
         }
+        // The Actor was not found in the Database so indicate that the actor was not found to the user.
         this.movieList.add("Actor not found");
         return this.movieList;
     }
