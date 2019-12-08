@@ -8,7 +8,7 @@ import java.util.List;
  * events. This class will be used by classes that need to use these events for
  * GUI actions.
  *
- * @author Dillon, Amina, Kumar. Last updated: October 6, 2019.
+ * @author Dillon, Amina, Kumar. Last updated: December 7, 2019.
  */
 public class AppBase implements ListenerInterface {
 
@@ -16,23 +16,23 @@ public class AppBase implements ListenerInterface {
     private final List listeners = new ArrayList();
 
     // A synchronized method that adds a listener to the List listeners.
-    public synchronized void addListener(ListenerInterface listener) {
-        listeners.add(listener);
+    public synchronized void addListener(ListenerInterface _listener) {
+        listeners.add(_listener);
     }
 
     // A synchronized method that removes a listener from the List listeners.
-    public synchronized void removeListener(ListenerInterface listener) {
-        listeners.remove(listener);
+    public synchronized void removeListener(ListenerInterface _listener) {
+        listeners.remove(_listener);
     }
 
     // A synchronized method that fire events based on actions passed into them.
-    protected synchronized void fireEvent(AppEvent event) {
+    protected synchronized void fireEvent(AppEvent _event) {
         // Clone the active listeners.
         Object[] temp_list = this.listeners.toArray();
         for (Object temp_list1 : temp_list) {
             ListenerInterface temp_obj = (ListenerInterface) temp_list1;
             // Sends the event to objects listening for.
-            temp_obj.messageRecieved(event);
+            temp_obj.messageRecieved(_event);
         }
     }
 
