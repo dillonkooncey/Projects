@@ -41,12 +41,12 @@ public class DataBaseTranslator {
      * the database.
      *
      * @param _newInfo - The information the user wants updated.
-     * @param _uuid - The uuid of that particular user.
+     * @param _username - The username of that particular user.
      * @param _table - The table in which the information would be located.
      * @return - Integer returned from DataBase call.
      */
-    public boolean updateObject(Map<String, String> _newInfo, String _uuid, String _table) {
-        return DataBaseTranslator.connect.updateObject(_newInfo, _uuid, _table);
+    public boolean updateObject(Map<String, String> _newInfo, String _username, String _table) {
+        return DataBaseTranslator.connect.updateObject(_newInfo, _username, _table);
     }
 
     /**
