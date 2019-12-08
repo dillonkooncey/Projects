@@ -168,7 +168,7 @@ public class AppGui extends AppBase {
         grid.setHgap(10);
         // Creating the email label and textfield which will be built by helper methods.
         Label emailLbl = this.addLabel("Email: ");
-        TextField emailTxt = this.addTextField("Email");
+        TextField emailTxt = this.addTextField("email");
         // Saving the text entered into the email textfield as a string.
         String email = emailTxt.getText();
         // Creating the username label and Textfield which will be build helper methods.
@@ -183,7 +183,7 @@ public class AppGui extends AppBase {
         String password = passWordTxt.getText();
         // Creating the "create new account" and "log in" button.
         Button registerBtn = this.addButton("Create new account", new AppMessage(AppMessage.REGISTRATION_PANEL));
-        Button logInBtn = this.addButton("Log in", new AppMessage(ModelController.verifyUser(email, username, password)));
+        Button logInBtn = this.addButton("Log in", new AppMessage(this.mc.verifyUser(email, username, password)));
         Button accountRecover = this.addButton("Recover Account", new AppMessage(AppMessage.ACCOUNT_RECOVERY));
         // Organizing the GridPane objects labels.
         grid.add(emailLbl, 0, 1, 1, 1);
@@ -232,7 +232,7 @@ public class AppGui extends AppBase {
         String username = userNameTxt.getText();
         String password = passWordTxt.getText();
         // Buttons for registering the account and exiting to the log in screen.
-        Button registerBtn = this.addButton("Submit", new AppMessage(ModelController.createUser(email, username, password)));
+        Button registerBtn = this.addButton("Submit", new AppMessage(this.mc.createUser(email, username, password)));
         Button logOutBtn = this.addButton("Return to log in screen", new AppMessage(AppMessage.LOG_IN_PANEL));
         // Organizing the Labels in the GridPane object.
         grid.add(registration, 0, 0, 2, 1);
@@ -269,7 +269,7 @@ public class AppGui extends AppBase {
         String email = emailTxt.getText();
         String username = usernameTxt.getText();
         String password = passWordTxt.getText();
-        Button recoverBtn = this.addButton("Recover Account", new AppMessage(this.mc.reactivateUser(email, username, password))); // Check to see if account is not active.
+        Button recoverBtn = this.addButton("Recover Account", new AppMessage(this.mc.reactivateUser(email, username, password)));
         Button logInBtn = this.addButton("Return to log in screen", new AppMessage(AppMessage.LOG_IN_PANEL));
         // Populate GridPane with labels, buttons, and textfields.
         grid.add(prompt, 0, 0, 3, 1);
@@ -406,11 +406,12 @@ public class AppGui extends AppBase {
         // Building the lables, textfields, and buttons for the grid pane.
         Label searchMovieLbl = this.addLabel("Search Movie:");
         TextField searchMovieTxt = this.addTextField("Search");
+        searchMovieTxt.setText("Batman");
         Button search = this.addButton("Search", new AppMessage(AppMessage.ALL_MOVIES_PANEL));
         Label searchedMovie = this.addLabel("Searched Movie:");
         TextField searchedMovieTxt = this.addTextField(this.mc.getMovieName());
         Label movieRatingLbl = this.addLabel("Movie Rating:");
-        TextField movieRatingTxt = this.addTextField(this.mc.getMovieRating() + "/10");
+        TextField movieRatingTxt = this.addTextField(this.mc.getMovieRating() + "/10.0");
         Button returnToHomeScreen = this.addButton("Return to home Screen", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
         // Adding the Labels, TextFields, and Buttons to the GridPane.
         grid.add(returnToHomeScreen, 3, 0);
@@ -447,7 +448,7 @@ public class AppGui extends AppBase {
         Label listOfMoviesLbl = this.addLabel("List of movies acted in:");
         ListView listOfMovies = new ListView();
         // Populate the ListView object.
-        listOfMovies.getItems().add(this.mc.getActorMovieList());
+        listOfMovies.getItems().add("Movies");
         Button returnToHomeScreen = this.addButton("Return to home Screen", new AppMessage(AppMessage.HOME_SCREEN_PANEL));
         // Add all of the labels, textfields, buttons, and listview to the GridPane object.
         grid.add(returnToHomeScreen, 3, 0);
@@ -472,7 +473,7 @@ public class AppGui extends AppBase {
      * @return - New Button object.
      */
     private Button addButton(String _name, final AppMessage _message) {
-        // Adding a new Button object.
+        // Creating a new Button object.
         Button btn = new Button();
         // Setting the text for that button.
         btn.setText(_name);
