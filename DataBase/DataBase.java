@@ -38,7 +38,7 @@ public class DataBase implements DataBaseInterface {
      * @param _attributes - The attributes of the new object.
      * @param _table - The table that will be checked and where the object will
      * be added.
-     * @return - 1 if the object was created and 0 if not.
+     * @return - True if the object was created and false if not.
      */
     @Override
     public boolean createObject(Map<String, String> _attributes, String _table) {
@@ -105,18 +105,18 @@ public class DataBase implements DataBaseInterface {
     @Override
     public boolean updateObject(Map<String, String> _newInfo, String _username, String _table) {
         // First check to see if the desired information is already entered into 
-        int checked = this.checkUpdate(_newInfo, _table);
+        boolean checked = this.checkUpdate(_newInfo, _table);
         // If no object in the database exists with this information, change the info of the uuid.
-        if (checked == 0) {
+        if (checked == true) {
             // Create the strings for the SQL String later.
             String table = "UPDATE " + _table + " SET ";
             String values = "";
             // Iterate through the HahsMap to prepare the SQL string.
             for (Map.Entry<String, String> _map : _newInfo.entrySet()) {
-                values += "" + _map.getKey() + " = '" + _map.getValue() + "', and ";
+                values += "" + _map.getKey() + " = '" + _map.getValue() + "', ";
             }
             // Trim off the last , and.
-            values = values.substring(0, values.length() - 6);
+            values = values.substring(0, values.length() - 2);
             // Create the string for the SQL update
             String SQL = table + values + " WHERE username = '" + _username + "'";
             // Perform the SQL update.
@@ -167,7 +167,6 @@ public class DataBase implements DataBaseInterface {
             // Trim off the last ", and".
             st = st.substring(0, st.length() - 5);
             String SQL = update + changeActive + st;
-            System.out.println(SQL);
             this.executeChange(SQL);
             return true;
             // Else the deactivated account was not found so return false;
@@ -204,7 +203,7 @@ public class DataBase implements DataBaseInterface {
             // If a record exists with this information return true indicating 1 object has this information.
             if (this.rs.next()) {
                 return true;
-                // Else return 0 indicating 0 objects have this data.
+                // Else return false indicating 0 objects have this data.
             } else {
                 return false;
             }
@@ -219,7 +218,7 @@ public class DataBase implements DataBaseInterface {
      *
      * @return - Return int based on whether you can update or not.
      */
-    private int checkUpdate(Map<String, String> _obj, String _table) {
+    private boolean checkUpdate(Map<String, String> _obj, String _table) {
         // Create strings that will help create the SQL statement.
         String table = "SELECT * FROM " + _table;
         String values = " WHERE ";
@@ -236,18 +235,18 @@ public class DataBase implements DataBaseInterface {
             this.pst = this.con.prepareStatement(SQL);
             // Create a result set with the SQL search.
             this.rs = this.pst.executeQuery();
-            // If an object in the database exists with this information return 1 indicating
+            // If an object in the database exists with this information return false indicating
             // at least one object exists with this information.
             if (this.rs.next()) {
-                return 1;
-                // Else 0 objects have this information.
+                return false;
+                // Else 0 objects have this information so true.
             } else {
-                return 0;
+                return true;
             }
         } catch (SQLException e) {
             System.out.println("There was an error: " + e.getMessage());
         }
-        return 1;
+        return true;
     }
 
     /**
