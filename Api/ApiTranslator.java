@@ -14,8 +14,8 @@ public class ApiTranslator {
      * @param _actorName - Name of the Actor that the User wants searched.
      * @return - An ArrayList of movie names that Actor has acted in.
      */
-    public static ArrayList<String> findMovieList(String _actorName) {
-        return ApiTranslator.connect.searchActor(_actorName);
+    public ArrayList<String> findMovieList(String _actorName) {
+        return this.connect.searchActor(_actorName);
     }
     
     /**
@@ -23,7 +23,7 @@ public class ApiTranslator {
      * @param _movieName - Name of the Movie the user wants the rating for.
      * @return - The double value of the movie rating.
      */
-    public static double findMovieRating(String _movieName) {
-        return ApiTranslator.connect.searchMovie(_movieName);
+    public double findMovieRating(String _movieName) {
+        return this.connect.searchMovie(_movieName);
     }
 }
