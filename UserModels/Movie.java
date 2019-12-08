@@ -15,7 +15,7 @@ public class Movie extends AppBase {
     private double rating;
     private String name;
     // Give access to the Apitranslator class for API calls.
-    private static ApiTranslator translate = new ApiTranslator();
+    private ApiTranslator translate = new ApiTranslator();
 
     // Overloaded constructor to allow for an empty object.
     public Movie() {
@@ -35,11 +35,9 @@ public class Movie extends AppBase {
      * @param _movieName - Name of the movie searched by the User.
      * @return - int of the Movie panel
      */
-    public static double findMovieRating(String _movieName) {
+    public double findMovieRating(String _movieName) {
         // Get the rating of the movie searched by the User and store it as a double.
-        double movieRating = ApiTranslator.findMovieRating(_movieName);
-        // Create a new Movie object with the double value of the searched movie.
-        Movie movie = new Movie(movieRating, _movieName);
+        double movieRating = translate.findMovieRating(_movieName);
         // Return back to the movie rating panel.
         return movieRating;
     }
