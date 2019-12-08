@@ -53,7 +53,6 @@ public class User {
         boolean checkDb = translate.readObject(map, "users");
         // Check and see if user does not exist then create a new one. Else dont.
         if (checkDb == true) {
-            User user = new User(_email, _username, _password);
             return true;
             // Else the object didnt exist so return the int of the log in panel.
         } else {
@@ -186,7 +185,6 @@ public class User {
         boolean checkDeactivated = translate.reactivateAccount(map, "users");
         // If account was reactivated the create a new User object with that information and return true.
         if (checkDeactivated == true) {
-            User user = new User(_email, _username, _password);
             return true;
             // Else the account was not reactivated so return false;
         } else {
