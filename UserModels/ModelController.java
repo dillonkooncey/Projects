@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ModelController {
 
     // Give access to models to fetch information.
-    private User user;
+    private User user = new User();
     private Actor actor = new Actor();
     private Movie movie = new Movie();
 
@@ -55,7 +55,7 @@ public class ModelController {
      */
     public int createUser(String _email, String _username, String _password) {
         // Boolean sending information to User class to see if account can be created.
-        boolean checkAccount = User.createUser(_email, _username, _password);
+        boolean checkAccount = this.user.createUser(_email, _username, _password);
         // If account was created go to home screen. Else go back to registration screen.
         if (checkAccount == true) {
             this.user = new User(_email, _username, _password);
