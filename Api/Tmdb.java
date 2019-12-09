@@ -13,7 +13,7 @@ import org.json.JSONObject;
 /**
  * Tmdb class that searches the Tmdb API for movies and actors.
  *
- * @author Dillon. Last updated: November 4, 2019.
+ * @author Dillon, Amina, Kumar. Last updated: November 4, 2019.
  */
 public class Tmdb implements ApiInterface {
 
@@ -118,7 +118,6 @@ public class Tmdb implements ApiInterface {
         } catch (Exception e) {
 
         }
-        // The Actor was not found in the Database so indicate that the actor was not found to the user.
         this.movieList.add("Actor not found");
         return this.movieList;
     }
