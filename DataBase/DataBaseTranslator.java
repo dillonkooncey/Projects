@@ -53,12 +53,12 @@ public class DataBaseTranslator {
      * Method that sends the username and table name to the database to delete
      * an object.
      *
-     * @param _username - the username of that particular user.
+     * @param _map - HashMap of user information.
      * @param _table - The table in which the object is located in.
      * @return - Value returned from DataBase call.
      */
-    public boolean deleteObject(String _username, String _table) {
-        return DataBaseTranslator.connect.deleteObject(_username, _table);
+    public boolean deleteObject(Map<String, String> _map, String _table) {
+        return DataBaseTranslator.connect.deleteObject(_map, _table);
     }
 
     /**
