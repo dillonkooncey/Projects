@@ -8,7 +8,7 @@ import java.util.Collections;
 /**
  * Actor class that includes the list of movies that actor has acted in.
  *
- * @author Dillon. Last updated December 1, 2019.
+ * @author Dillon, Amina, Kumar. Last updated December 1, 2019.
  */
 public class Actor extends AppBase {
 
