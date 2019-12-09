@@ -3,7 +3,7 @@ package Api;
 import java.util.ArrayList;
 /**
  * Translator class for the External API's.
- * @author Dillon. Last updated: November 4, 2019.
+ * @author Dillon, Amina, Kumar. Last updated: November 4, 2019.
  */
 public class ApiTranslator {
     // Give access to the Tmdb API through the ApiInterface.
