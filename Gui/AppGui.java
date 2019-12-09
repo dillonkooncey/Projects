@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 /**
  * Class that displays all GUI to the user.
  *
- * @author Dillon. Last updated: December 1, 2019.
+ * @author Dillon, Amina. Last updated: December 1, 2019.
  */
 public class AppGui extends AppBase {
 
@@ -406,7 +406,6 @@ public class AppGui extends AppBase {
         // Building the lables, textfields, and buttons for the grid pane.
         Label searchMovieLbl = this.addLabel("Search Movie:");
         TextField searchMovieTxt = this.addTextField("Search");
-        searchMovieTxt.setText("Batman");
         Button search = this.addButton("Search", new AppMessage(AppMessage.ALL_MOVIES_PANEL));
         Label searchedMovie = this.addLabel("Searched Movie:");
         TextField searchedMovieTxt = this.addTextField(this.mc.getMovieName());
