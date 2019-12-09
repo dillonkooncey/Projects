@@ -71,7 +71,11 @@ public class User {
      * @param _password - Password entered in from registration menu.
      * @return - True of false depending on if User was created or not.
      */
-    public static boolean createUser(String _email, String _username, String _password) {
+    public boolean createUser(String _email, String _username, String _password) {
+        // If statement guarding against empty parameters.
+        /*if (_email.isEmpty() || _username.isEmpty() || _password.isEmpty()) {
+            return false;
+        }*/
         // Create HashMap and populate it with the information passed in from GUI and the string indicating what it is.
         HashMap<String, String> map = new HashMap();
         map.put("email", _email);
@@ -150,8 +154,13 @@ public class User {
      * @return - True if account was deleted, false if not.
      */
     public boolean deleteAccount() {
+        HashMap<String, String> map = new HashMap();
+        map.put("email", this.email);
+        map.put("username", this.username);
+        map.put("password", this.password);
+        map.put("active", "true");
         // Create a boolean variable that makes a call to the DataBaseTranslator class to delete the current account.
-        boolean deleteUser = translate.deleteObject(this.getUsername(), "users");
+        boolean deleteUser = translate.deleteObject(map, "users");
         // If object was deleted, set everything equal to null and return to the Login screen.
         if (deleteUser == true) {
             this.setEmail(null);
