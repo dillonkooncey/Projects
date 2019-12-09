@@ -128,18 +128,31 @@ public class DataBase implements DataBaseInterface {
     }
 
     /**
-     * Method that deactivates an account based on a uuid of the account.
+     * Method that deactivates an account based on the account information.
      *
-     * @param _username - Username for the account deleted.
+     * @param _map - HashMap of user information.
      * @param _table - The table the object is located in.
      * @return - True if the account was deleted or false if not.
      */
     @Override
-    public boolean deleteObject(String _username, String _table) {
-        // Delete object from database at passed in uuid location.
-        String SQL = "update " + _table + " set active = 'false' where username = '" + _username + "'";
-        this.executeChange(SQL);
-        return true;
+    public boolean deleteObject(Map<String, String> _map, String _table) {
+        boolean checkRecords = this.checkRecords(_map, _table);
+        if (checkRecords == true) {
+            String update = "update " + _table;
+            String changeActive = " set active = 'false' where ";
+            String st = "";
+            // Loop through the HashMap to complete the search string.
+            for (Map.Entry<String, String> entry : _map.entrySet()) {
+                st += entry.getKey() + " = '" + entry.getValue() + "' and ";
+            }
+            // Trim off the last ", and".
+            st = st.substring(0, st.length() - 5);
+            String SQL = update + changeActive + st;
+            this.executeChange(SQL);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
