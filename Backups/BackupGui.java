@@ -228,8 +228,13 @@ public class BackupGui {
      */
     private void deleteAccountPanel() {
         System.out.println("Deleting your account");
+        HashMap<String, String> map = new HashMap();
+        map.put("email", this.user.getEmail());
+        map.put("username", this.user.getUsername());
+        map.put("password", this.user.getPassword());
+        map.put("active", "true");
         // Send account to database to be deleted.
-        boolean delete = translate.deleteObject(this.user.getUsername(), "users");
+        boolean delete = translate.deleteObject(map, "users");
         // If account was deleted notify user of deleted account then go back to start panel.
         if (delete == true) {
             System.out.println("Account was deleted");
