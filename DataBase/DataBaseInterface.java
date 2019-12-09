@@ -15,7 +15,7 @@ public interface DataBaseInterface {
 
     public abstract boolean updateObject(Map<String, String> _keyValuePairs, String _username, String _table);
 
-    public abstract boolean deleteObject(String _username, String _table);
+    public abstract boolean deleteObject(Map<String, String> _map, String _table);
     
     public abstract boolean reactivateAccount(Map<String,String> _map, String _table);
 }
