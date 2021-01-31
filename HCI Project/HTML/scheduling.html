@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--scheduling.html-->
+<!-- Subsystem: Entertainment -->
+<!--Dillon Koonce-->
+<html>
+<head>
+	<title>Scheduling</title>
+	<link rel="stylesheet" type="text/css" href="CSS/cssfile.css">
+  <script src="JavaScript/JavaScriptfile.js"></script>
+<body>
+  <table align="center" id="addTable">
+    <tr>
+        <th colspan="5">Add To Schedule</th>
+    </tr>
+    <tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Type of Media</th>
+    <th>Location</th>
+    <th>Add</th>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="daycheckboxes" id="checkmonday" value="Monday">
+      <label for="monday"><font size="2">Mon.</font></label>
+      <p></p>
+      <input type="checkbox" name="daycheckboxes" id="checktuesday" value="Tuesday">
+      <label for="tuesday"><font size="2">Tue.</font></label>
+      <p></p>
+      <input type="checkbox" name="daycheckboxes" id="checkwednesday" value="Wednesday">
+      <label for="Wednesday"><font size="2">Wed.</font></label>
+      <p></p>
+      <input type="checkbox" name="daycheckboxes" id="checkthursday" value="Thursday">
+      <label for="thursday"><font size="2">Thur.</font></label>
+      <p></p>
+      <input type="checkbox" name="daycheckboxes" id="checkfriday" value="Friday">
+      <label for="friday"><font size="2">Fri.</font></label>
+      <p></p>
+      <input type="checkbox" name="daycheckboxes" id="checksaturday" value="Saturday">
+      <label for="saturday"><font size="2">Sat.</font></label>
+      <p></p>
+      <input type="checkbox" name="daycheckboxes" id="checksunday" value="Sunday">
+      <label for="sunday"><font size="2">Sun.</font></label>
+    </td>
+    <td>
+      <label>Start time:</label>
+      <input type="time" name="starttime" id="addstarttime">
+      <p> </p>
+      <label>End Time:</label>
+      <input type="time" name="endtime" id="addendtime">
+    </td>
+    <td>
+      <input type="checkbox" name="mediacheckboxes" id="checkspotify">
+      <label for="spotify"><font size="2">Spotify</font></label>
+      <p></p>
+      <input type="checkbox" name="mediacheckboxes" id="checkapple">
+      <label for="apple"><font size="2">Apple Music</font></label>
+      <p></p>
+      <input type="checkbox" name="mediacheckboxes" id="checkcabletv">
+      <label for="cable tv"><font size="2">Cable TV</font></label>
+      <p></p>
+      <input type="checkbox" name="mediacheckboxes" id="checkcableradio">
+      <label for="cable radio"><font size="2">Cable Radio</font></label>
+      <p></p>
+      <input type="checkbox" name="mediacheckboxes" id="checkinstagram">
+      <label for="instagram"><font size="2">Instagram</font></label>
+      <p></p>
+      <input type="checkbox" name="mediacheckboxes" id="checkfacebook">
+      <label for="facebook"><font size="2">Facebook</font></label>
+      <p></p>
+      <input type="checkbox" name="mediacheckboxes" id="checktwitter">
+      <label for="twitter"><font size="2">Twitter</font></label>
+      <p></p>
+      <input type="checkbox" name="mediacheckboxes" id="checkgames">
+      <label for="games"><font size="2">Games</font></label>
+    </td>
+    <td>
+      <input type="checkbox" name="locationcheckboxes" id="checklivingroom">
+      <label for="living room"><font size="2">Living Room</font></label>
+      <p></p>
+      <input type="checkbox" name="locationcheckboxes" id="checkdiningroom">
+      <label for="dining room"><font size="2">Dining Room</font></label>
+      <p></p>
+      <input type="checkbox" name="locationcheckboxes" id="checkkitchen">
+      <label for="kitchen"><font size="2">Kitchen</font></label>
+      <p></p>
+      <input type="checkbox" name="locationcheckboxes" id="checkmasbedroom">
+      <label for="mas bedroom"><font size="2">Mas. Bedroom</font></label>
+      <p></p>
+      <input type="checkbox" name="locationcheckboxes" id="checklisabedroom">
+      <label for="lisa bedroom"><font size="2">Lisa Bedroom</font></label>
+      <p></p>
+      <input type="checkbox" name="locationcheckboxes" id="checkguestbedroom">
+      <label for="guest bedroom"><font size="2">Guest Bedroom</font></label>
+
+    </td>
+    <td>
+      <button class="addToScheduleBtn" type="button" onclick= "addToSchedule()">Add to schedule</button>
+    </td>
+  </tr>
+</table>
+<p></p>
+<table align="center" id="currentScheduleTable">
+    <tr>
+        <th colspan="5">Current Schedule</th>
+    </tr>
+    <tr>
+    <th>Days</th>
+    <th>Time</th>
+    <th>Type</th>
+    <th>Location</th>
+   </tr>
+  <tr>
+      <td>Sun.-Sat.</td>
+      <td>7:00am-8:00am</td>
+      <td>Radio</td>
+      <td>Kitchen</td>
+  </tr>
+  <tr>
+    <td colspan="5" align="center"><button class="favorite styled" type="button" onclick="removeFromTable()">Remove From Schedule</button></td>
+  </tr>
+</table>
+</body>
+</html>

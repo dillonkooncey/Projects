@@ -1,0 +1,835 @@
+
+body {
+	background-image: url("https://wallpapercave.com/wp/wp3013555.jpg");
+}
+
+/* CSS for Games Page */
+.container {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 200px);
+	grid-gap: 3px;
+  align-items: center;
+}
+
+.Sudoku {
+	grid-column: 1;
+  grid-row: 1;
+}
+
+.Tic-Tac-Toe {
+	grid-column: 3;
+  grid-row: 1;
+}
+
+.Minesweeper {
+  grid-column: 1;
+	grid-row: 3;
+}
+
+.Pac-Man {
+	grid-column: 3;
+  grid-row: 3;
+}
+
+.gamesInstructions {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+
+/* CSS for Entertainment Page*/
+.grid {
+	height: 100%
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(4, 200px);
+	grid-template-areas: 
+		"a b c d"
+		"e f g h"
+		"i j k l"
+    "m m n n";
+	grid-gap: 3px;
+	place-items: center;
+}
+
+.Spotify {
+	grid-area: a;
+}
+
+.Apple-Music {
+	grid-area: b;
+}
+
+.Cable-Tv {
+	grid-area: c;
+}
+
+.Cable-Radio {
+	grid-area: d;
+}
+
+.Instagram {
+	grid-area: e;
+}
+
+.Facebook {
+	grid-area: f;
+}
+
+.Twitter {
+	grid-area: g;
+}
+
+.Games {
+	grid-area: h;
+}
+
+.History {
+	grid-area: i;
+}
+
+.Settings {
+	grid-area: j;
+}
+
+.Help {
+	grid-area: k;
+}
+
+.Scheduling {
+	grid-area: l;
+}
+
+.Instructions {
+  grid-area: m;
+}
+
+.InstructionsBtn {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: 3px solid blue;
+}
+
+.room {
+  grid-area: n;
+}
+
+
+/* CSS for Music Page*/
+.music {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(9, 1fr);
+	grid-template-rows: repeat(9, 75px);
+	grid-gap: 10px;
+}
+
+.roomBtns {
+  background-color: red;
+  border: none;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+  height: 55px;
+}
+
+.roomBtns:focus {
+  background-color: green;
+}
+
+.Living-Room {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.Dining-Room {
+	grid-column: 3;
+	grid-row: 1;
+}
+
+.Kitchen {
+	grid-column: 4;
+	grid-row: 1;
+}
+
+.Mas-Bedroom {
+	grid-column: 6;
+	grid-row: 1;
+}
+
+.Lisa-Bedroom {
+	grid-column: 7;
+	grid-row: 1;
+}
+.Guest-Bedroom {
+	grid-column: 8;
+	grid-row: 1;
+}
+
+.player {
+	grid-column: 3 / 8;
+	grid-row: 2 / 7;
+	padding: 30px;
+  background-color: rgba(0, 57, 214,.37);
+}
+
+.pop {
+	grid-column: 5;
+	grid-row: 8;
+}
+
+.country {
+  grid-column: 6;
+  grid-row: 8;
+}
+
+.classical {
+  grid-column: 7;
+  grid-row: 8;
+}
+.RandB {
+	grid-column: 3;
+	grid-row: 8;
+}
+
+.rock {
+	grid-column: 4;
+	grid-row: 8;
+}
+
+.rangeslider{ 
+    width: 200%;
+    grid-row: 7;
+    grid-column: 4 / 7; 
+} 
+  
+.myslider { 
+    -webkit-appearance: none; 
+    background: #FCF3CF; 
+    width: 50%; 
+    height: 20px; 
+    opacity: 2; 
+   } 
+  
+  
+.myslider::-webkit-slider-thumb { 
+    -webkit-appearance: none; 
+    cursor: pointer; 
+    background: blue; 
+    width: 5%; 
+    height: 20px; 
+} 
+  
+  
+.myslider:hover { 
+    opacity: 1; 
+}
+
+.musicTV {
+  grid-column: 8;
+  grid-row: 2;
+}
+
+.musicRadio {
+  grid-column: 9;
+  grid-row: 2;
+}
+
+.musicIG {
+  grid-column: 8;
+  grid-row: 4;
+}
+
+.musicFB {
+  grid-column: 9;
+  grid-row: 4;
+}
+
+.musicTwitter { 
+  grid-column: 8 / -1;
+  grid-row: 6;
+}
+
+.musicGames {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.musicHistory {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.musicSettings {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.musicHelp {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+.musicScheduling {
+  grid-column: 1 / 3;
+  grid-row: 6;
+}
+
+
+/* Cable TV CSS*/
+.remote {
+	background-color: black;
+	border-color: white;
+}
+
+.remote td {
+	background-color: black;
+	height: 60px;
+}
+
+.remoteBtn {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+  height: 55px;
+}
+
+.recordBtn {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+  height: 55px;
+}
+
+.prevBtn {
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+  height: 55px;
+}
+
+.presetChBtn {
+  background-color: orange;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+  height: 55px;
+}
+
+.recordBtn {
+  background-color: purple;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+  height: 55px;
+}
+
+.setPresetChBtn {
+  background-color: lightpink;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+  height: 55px;
+}
+
+.genericRemoteBtn {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+  height: 55px;
+}
+
+/* Help CSS*/
+table, th, td {
+  border: 2px solid black;
+  padding: 10px;
+  width: 800px;
+  background-color: white;
+  font-family: 'arial', sans-serif;
+}
+
+/* Settings CSS*/
+.color-blind {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.color-blind {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.color-blind:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.small-font {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.small-font {
+  background-color: white; 
+  color: black; 
+  border: 2px solid blue;
+}
+
+.small-font:hover {
+  background-color: blue;
+  color: white;
+}
+
+.normal-font {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.normal-font {
+  background-color: white; 
+  color: black; 
+  border: 2px solid red;
+}
+
+.normal-font:hover {
+  background-color: red;
+  color: white;
+}
+
+.large-font {
+  background-color: grey;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.large-font {
+  background-color: white; 
+  color: black; 
+  border: 2px solid grey;
+}
+
+.large-font:hover {
+  background-color: grey;
+  color: white;
+}
+
+.enable {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.enable {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.enable:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.disable {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.disable {
+  background-color: white; 
+  color: black; 
+  border: 2px solid red;
+}
+
+.disable:hover {
+  background-color: red;
+  color: white;
+}
+
+/* Cable Radio CSS*/
+.radio {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(8, 100px);
+	grid-gap: 3px;
+}
+
+.preset1 {
+  grid-column: 2;
+  grid-row: 1;
+  border: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+}
+
+.preset2 {
+  grid-column: 3;
+  grid-row: 1;
+  border: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+}
+
+.preset4 {
+  grid-column: 4;
+  grid-row: 1;
+  border: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+}
+
+.preset5 {
+  grid-column: 5;
+  grid-row: 1;
+  border: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+}
+
+.setpreset1 {
+  grid-column: 1;
+  grid-row: 2;
+  border: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+}
+
+.setpreset2 {
+  grid-column: 1;
+  grid-row: 3;
+  border: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+}
+
+.setpreset3 {
+  grid-column: 1;
+  grid-row: 4;
+  border: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+}
+
+.setpreset4 {
+  grid-column: 1;
+  grid-row: 5;
+  border: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+}
+
+.setPresetBtn {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.presetBtn {
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;  
+}
+
+.channel {
+	grid-column: 4 / 6;
+	grid-row: 3;
+	border-style: 3px solid white;
+	background-color: rgba(0, 57, 214,.37);
+	border: solid white;
+}
+
+.ambox {
+  grid-column: 4;
+  grid-row: 4;
+  border-style: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+  border: solid white;  
+}
+
+.fmbox {
+  grid-column: 5;
+  grid-row: 4;
+  border-style: 3px solid white;
+  background-color: rgba(0, 57, 214,.37);
+  border: solid white;  
+}
+
+.am {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.am:focus {
+  background-color: blue;
+}
+
+.fm {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.fm:focus {
+  background-color: blue;
+}
+
+.volumeslider {
+	grid-column: 4 / 6;
+	grid-row: 5;
+	align-items: center;
+	justify-content: center;
+}
+
+.channelslider {
+	grid-column: 4 / 6;
+	grid-row: 6;
+	align-items: center;
+	justify-content: center;
+}
+
+.seeknext {
+  grid-column: 6;
+  grid-row: 6;
+  align-items: center;
+  justify-content: center;
+}
+
+.seekback {
+  grid-column: 3;
+  grid-row: 6;
+  align-items: center;
+  justify-content: center;
+}
+
+.livingRoomRadio {
+  grid-column: 2;
+  grid-row: 7;
+}
+
+.diningRoomRadio {
+  grid-column: 3;
+  grid-row: 7;
+}
+
+.kitchenRadio {
+  grid-column: 4;
+  grid-row: 7;
+}
+
+.masBedRoomRadio {
+  grid-column: 5;
+  grid-row: 7;
+}
+
+.lisaRoomRadio {
+  grid-column: 6;
+  grid-row: 7;
+}
+
+.guestRoomRadio {
+  grid-column: 7;
+  grid-row: 7;
+}
+
+.spotifyRadio {
+  grid-column: 7;
+  grid-row: 1;
+}
+
+.appleMusicRadio {
+  grid-column: 8;
+  grid-row: 1;
+}
+
+.cableTvRadio {
+  grid-column: 7;
+  grid-row: 2;
+}
+
+.instagramRadio {
+  grid-column: 8;
+  grid-row: 2;
+}
+
+.facebookRadio {
+  grid-column: 7;
+  grid-row: 3;
+}
+
+.twitterRadio {
+  grid-column: 8;
+  grid-row: 3;
+}
+
+.gamesRadio {
+  grid-column: 7;
+  grid-row: 4;
+}
+
+.historyRadio {
+  grid-column: 8;
+  grid-row: 4;
+}
+
+.settingsRadio {
+  grid-column: 7;
+  grid-row: 5;
+}
+
+.helpRadio {
+  grid-column: 8;
+  grid-row: 5;
+}
+
+.schedulingRadio {
+  grid-column: 7 / 9;
+  grid-row: 6;
+}

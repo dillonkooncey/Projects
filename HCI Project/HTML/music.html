@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--music.html-->
+<!-- Subsystem: Entertainment -->
+<!--Dillon Koonce-->
+<html>
+<head>
+	<title>Music</title>
+	<link rel="stylesheet" type="text/css" href="CSS/cssfile.css">
+	<script src="JavaScript/JavaScriptfile.js"></script>
+<body>
+	<div class="music">
+		<div class="Living-Room">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Living Room</font></button></p>
+		</div>
+		<div class="Dining-Room">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Dining Room</font></button></p>
+		</div>
+		<div class="Kitchen">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Kitchen</font></button></p>
+		</div>
+		<div class="Mas-Bedroom">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Mas.  Bedroom</font></button></p>
+		</div>
+		<div class="Lisa-Bedroom">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Lisa Bedroom</font></button></p>
+		</div>
+		<div class="Guest-Bedroom">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Guest Bedroom</font></button></p>
+		</div>
+		<div class="rangeslider"> 
+  			<input type="range" min="1" max="100" value="10"
+                  class="myslider" id="sliderRange"> 
+  			<p><font style= size="2" face="arial" color="white">Volume: </font><span id="demo"></span></p> 
+		</div> 
+		<script> 
+			var rangeslider = document.getElementById("sliderRange"); 
+			var output = document.getElementById("demo"); 
+			output.innerHTML = rangeslider.value; 
+  
+			rangeslider.oninput = function() { 
+  			output.innerHTML = this.value; 
+			} 
+		</script>
+  		
+		<div class="player">
+			<font face="arial" color="white">
+				<p align="center">Song Title</p>
+				<p align="center">Artist - Album</p>
+				<p align="center">Playlist</p>
+				<p align="center"><img src="https://cdn.pixabay.com/photo/2013/07/12/12/53/button-146461_960_720.png" style= height="300px" width="200px"></p>
+			</font>
+		</div>
+		<div class="pop">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Pop</font></button></p>
+		</div>
+		<div class="RandB">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">R&B</font></button></p>
+		</div>
+		<div class="rock">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Rock</font></button></p>
+		</div>
+		<div class="country">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Country</font></button></p>
+		</div>
+		<div class="classical">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Classical</font></button></p>
+		</div>
+		<div class="musicTV">
+			<a href="cableTv.html" target="_blank"><p align="center"><img src="https://is.wfu.edu/wp-content/uploads/2016/04/cable-tv.png" style= height="100px" width="75px"></p></a>
+			<p align="center"><font style= size="2" face="arial" color="white">Cable TV</font></p>
+		</div>
+		<div class="musicRadio">
+			<a href="cable radio.html" target="_blank"><p align="center"><img src="https://cdn0.iconfinder.com/data/icons/communication-208/64/technology-electrical-communications-antenna-wireless_connectivity-radio_antenna-wireless_internet-w-512.png" style= height="100px" width="75px"></p></a>
+			<p align="center"><font style= size="2" face="arial" color="white">Cable Radio</font></p>
+		</div>
+		<div class="musicIG">
+			<a href="https://www.instagram.com/" target="_blank"><p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" style= height= "100px" width="75px"></p></a>
+			<p align="center"><font style= size="2" face="arial" color="white">Instagram</font></p>
+		</div>
+		<div class="musicFB">
+			<a href="https://www.facebook.com/login.php" target="_blank"><p align="center"><img src="http://www.premierecreative.com/wp-content/uploads/2014/05/facebook-logo1.png" style= height="100px" width="75px"></p></a>
+			<p align="center"><font style= size="2" face="arial" color="white">Facebook</font></p>
+		</div>
+		<div class="musicTwitter">
+			<a href="https://twitter.com/login/" target="_blank"><p align="center"><img src="http://1000logos.net/wp-content/uploads/2017/06/Twitter-Logo.png" style= height="100px" width="75px"></p></a>
+			<p align="center"><font style= size="2" face="arial" color="white">Twitter</font></p>			
+		</div>
+		<div class="musicGames">
+			<a href="games.html" target="_blank"><p align="center"><img src="https://gameopic.files.wordpress.com/2016/09/logo-game.png" style= height="120px" width="70px"></p></a>
+			<p align="center"><font style= size="2" face="arial" color="white">Games</font></p>
+		</div>
+		<div class="musicHistory">
+			<a href="history.html" target="_blank"><p align="center"><img src="https://minglebit.com/img/portfolios/app/products/iclock/iclock_logo.png" style= height="110px" width="60px"></p></a>
+			<p align="center"><font style= size="2" face="arial" color="white">History</font></p>
+		</div>
+		<div class="musicSettings">
+			<a href="settings.html" target="_blank"><p align="center"><img src="https://cdn1.iconfinder.com/data/icons/luchesa/128/Settings-512.png" style= height="100px" width="75px"></p></a>
+			<p align="center"><font style= size="2" face="arial" color="white">Settings</font></p>
+		</div>
+		<div class="musicHelp">
+			<a href="help.html" target="_blank"><p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Blue_question_mark_icon.svg/1024px-Blue_question_mark_icon.svg.png" style= height="100px" width="75px"></p></a>
+			<p align="center" target="_blank"><font style= size="2" face="arial" color="white">Help</font></p>
+		</div>
+		<div class="musicScheduling">
+			<a href="scheduling.html" target="_blank"><p align="center"><img src="https://cdn.pixabay.com/photo/2017/01/31/20/40/calendar-2027122_960_720.png" style= height="100px" width="75px"></p></a>
+			<p align="center"><font style= size="2" face="arial" color="white">Scheduling</font></p>
+		</div>
+</body>
+</html>

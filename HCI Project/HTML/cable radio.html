@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--cable radio.html-->
+<!-- Subsystem: Entertainment -->
+<!--Dillon Koonce-->
+<html>
+<head>
+	<title>Cable Radio</title>
+	<link rel="stylesheet" type="text/css" href="CSS/cssfile.css">
+	<script src="JavaScript/JavaScriptfile.js"></script>
+<body>
+	<div class="radio">
+		<div class="preset1">
+			<font size="2" face="arial" color="white"><p align="center"><button class="presetBtn" id="preset1btn" onclick="setChannel('preset1btn')">Preset #1</button></p></font>
+		</div>
+		<div class="preset2">
+			<font size="2" face="arial" color="white"><p align="center"><button class="presetBtn" id="preset2btn" onclick="setChannel('preset2btn')">Preset #2</button></p></font>
+		</div>
+		<div class="preset4">
+			<font size="2" face="arial" color="white"><p align="center"><button class="presetBtn" id="preset3btn" onclick="setChannel('preset3btn')">Preset #3</button></p></font>
+		</div>
+		<div class="preset5">
+			<font size="2" face="arial" color="white"><p align="center"><button class="presetBtn" id="preset4btn" onclick="setChannel('preset4btn')">Preset #4</button></p></font>
+		</div>
+		<div class="channel">
+			<font size="5" face="arial" color="white"><p align="center"><span id="demo"></span></p></font>
+		</div>
+		<div class="volumeslider" align="center">
+  			<input type="range" min="50.0" max="150.0" value="100.3" class="slider" id="myRange">
+  			<font color="white" face="arial">
+  				<p>Seek: <span id="demo"></span></p>
+  			</font>
+		</div>
+		<div class="channelslider" align="center">
+  			<input type="range" min="50" max="150" value="100" class="slider" id="seekRange">
+  			<font color="white" face="arial">
+  				<p>Volume: <span id="demo2"></span></p>
+  			</font>
+		</div>
+		<script> 
+			var rangeslider = document.getElementById("myRange"); 
+			var output = document.getElementById("demo"); 
+			output.innerHTML = rangeslider.value; 
+  
+			rangeslider.oninput = function() { 
+  			output.innerHTML = this.value; 
+			} 
+		</script>
+		<div class="setpreset1">
+			<p align="center"><font style= size="2" face="arial" color="white"><button class="setPresetBtn" onclick="setPreset('preset1btn', 'demo')">Set Preset1</button></font></p>
+		</div>
+		<div class="setpreset2">
+			<p align="center"><font style= size="2" face="arial" color="white"><button class="setPresetBtn" onclick="setPreset('preset2btn', 'demo')">Set Preset2</button></font></p>
+		</div>
+		<div class="setpreset3">
+			<p align="center"><font style= size="2" face="arial" color="white"><button class="setPresetBtn" onclick="setPreset('preset3btn', 'demo')">Set Preset3</button></font></p>
+		</div>
+		<div class="setpreset4">
+			<p align="center"><font style= size="2" face="arial" color="white"><button class="setPresetBtn" onclick="setPreset('preset4btn', 'demo')">Set Preset4</button></font></p>
+		</div>
+		<div class="ambox">
+			<p align="center"><font style= size="5" face="arial" color="white"><button class="am">AM</button></font></p>
+		</div>
+		<div class="fmbox">
+			<p align="center"><font style= size="5" face="arial" color="white"><button class="fm">FM</button></font></p>
+		</div>
+		<div class="seeknext">
+			<p align="center"><img src="https://cdn4.iconfinder.com/data/icons/media-controls-4/100/skip-ahead-512.png" style= height="100px" width= "50px"></p><p align="center"><font style= size="2" face="arial" color="white">Seek Next</font></p>
+		</div>
+		<div class="seekback">
+			<p align="center"><img src="https://cdn4.iconfinder.com/data/icons/media-controls-4/100/skip-back-512.png" style= height="100px" width="50px"></p><p align="center"><font style= size="2" face="arial" color="white">Seek Previous</font></p>
+		</div>
+		<div class="livingRoomRadio">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Living Room</font></button></p>
+		</div>
+		<div class="diningRoomRadio">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Dining Room</font></button></p>
+		</div>
+		<div class="kitchenRadio">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Kitchen</font></button></p>
+		</div>
+		<div class="masBedRoomRadio">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Master Bedroom</font></button></p>
+		</div>
+		<div class="lisaRoomRadio">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Lisa Room</font></button></p>
+		</div>
+		<div class="guestRoomRadio">
+			<p align="center"><button class="roomBtns"><font style= size="2" face="arial" color="white">Guest Bedroom</font></button></p>
+		</div>
+		<div class="spotifyRadio">
+			<a href="music.html" target="_blank"><p align="center"><img src="http://www.soft32.com/blog/wp-content/uploads/2016/08/spotify_logo.png" style= height="100px" width="50px"></a></p><p align="center"><font style= size="2" face="arial" color="white">Spotify</font></p>
+		</div>
+		<div class="appleMusicRadio">
+			<a href="music.html" target="_blank"><p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/1200px-ITunes_logo.svg.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="2" face="arial" color="white">Apple Music</font></p>
+		</div>
+		<div class="cableTvRadio">
+			<a href="cableTv.html" target="_blank"><p align="center"><img src="https://is.wfu.edu/wp-content/uploads/2016/04/cable-tv.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="2" face="arial" color="white">Cable Tv</font></p>
+		</div>
+		<div class="instagramRadio">
+			<a href="https://www.instagram.com/" target="_blank"><p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="2" face="arial" color="white">Instagram</font></p>
+		</div>
+		<div class="facebookRadio">
+			<a href="https://www.facebook.com/login.php" target="_blank"><p align="center"><img src="http://www.premierecreative.com/wp-content/uploads/2014/05/facebook-logo1.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="2" face="arial" color="white">Facebook</font></p>
+		</div>
+		<div class="twitterRadio">
+			<a href="https://twitter.com/login/" target="_blank"><p align="center"><img src="http://1000logos.net/wp-content/uploads/2017/06/Twitter-Logo.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="2" face="arial" color="white">Twitter</font></p>
+		</div>
+		<div class="gamesRadio">
+			<a href="games.html" target="_blank"><p align="center"><img src="https://gameopic.files.wordpress.com/2016/09/logo-game.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="2" face="arial" color="white">Games</font></p>
+		</div>
+		<div class="historyRadio">
+			<a href="history.html" target="_blank"><p align="center"><img src="https://minglebit.com/img/portfolios/app/products/iclock/iclock_logo.png" style= height="100px" width="35px"></p></a><p align="center"><font style= size="2" face="arial" color="white">History</font></p>
+		</div>
+		<div class="settingsRadio">
+			<a href="settings.html" target="_blank"><p align="center"><img src="https://cdn1.iconfinder.com/data/icons/luchesa/128/Settings-512.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="2" face="arial" color="white">Settings</font></p>
+		</div>
+		<div class="helpRadio">
+			<a href="help.html" target="_blank"><p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Blue_question_mark_icon.svg/1024px-Blue_question_mark_icon.svg.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="2" face="arial" color="white">Help</font></p>
+		</div>
+		<div class="schedulingRadio">
+			<a href="scheduling.html" target="_blank"><p align="center"><img src="https://cdn.pixabay.com/photo/2017/01/31/20/40/calendar-2027122_960_720.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="2" face="arial" color="white">Scheduling</font></p>
+		</div>
+	</div>
+</body>
+</html>

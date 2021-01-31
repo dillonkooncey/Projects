@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--cableTv.html-->
+<!-- Subsystem: Entertainment -->
+<!--Dillon Koonce-->
+<html>
+<head>
+	<title>Cable Tv</title>
+	<link rel="stylesheet" type="text/css" href="CSS/cssfile.css">
+	<script src="JavaScript/JavaScriptfile.js"></script>
+<body>
+	<div class="tvGrid">
+		<table align="center" class="remote">
+			<tr>
+				<td align="center" colspan="5"><font color="white"><p><font style= size="2" face="arial" color="white">Ch.</font></p><div id="currentChannel">123</div></font></td>
+			</tr>
+			<tr>
+				<td align="center"><font style= size="2" face="arial" color="white">Recordings</font></td>
+				<td align="center"><font color="white"><button class="genericRemoteBtn">Input</button></font></td>
+				<td align="center"><font color="white"><button class="genericRemoteBtn">Guide</button></font></td>
+				<td align="center"><p align="center"><img src="https://gearnuke.com/wp-content/uploads/2014/03/free-vector-power-button-clip-art_116612_Power_Button_clip_art_hight.png" style= height="100px" width="50px" id="power"></p></td>
+				<td align="center">
+					<font color="white">Set Presets</font>
+				</td>
+				<td align="center"><font color="white">Presets</font></td>
+			</tr>
+			<tr>
+				<td align="center"><font color="white">
+					<p align="center"><button class="recordBtn" id="add1" onclick="recordChannel('add1')">Add</button></p>
+				</td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="1" onclick="changeTVChannel('1')">1</button></font></td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="2" onclick="changeTVChannel('2')">2</button></font></td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="3" onclick="changeTVChannel('3')">3</button></font></td>
+				<td align="center">
+					<font color="white"><p align="center"><button class="setPresetChBtn" onclick="setChPreset('presetChannel1')">Set P1</button></p></font>
+				</td>
+				<td align="center"><font color="white">
+					<p><button class="presetChBtn" id="presetChannel1" onclick="changeTVChannel('presetChannel1')">123</button></p>
+				</font></td>
+			</tr>
+			<tr>
+				<td align="center"><font color="white">
+					<p align="center"><button class="recordBtn" id="add2" onclick="recordChannel('add2')">Add</button></p>
+				</td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="4" onclick="changeTVChannel('4')">4</button></font></td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="5" onclick="changeTVChannel('5')">5</button></font></td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="6" onclick="changeTVChannel('6')">6</button></font></td>
+				<td align="center">
+					<font color="white"><p align="center"><button class="setPresetChBtn" onclick="setChPreset('presetChannel2')">Set P2</button></p></font>
+				</td>
+				<td align="center"><font color="white">
+					<p><button class="presetChBtn" id="presetChannel2" onclick="changeTVChannel('presetChannel2')">234</button></p>
+				</font></td>
+			</tr>
+			<tr>
+				<td align="center"><font color="white">
+					<p align="center"><button class="recordBtn" id="add3" onclick="recordChannel('add3')">Add</button></p>
+				</td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="7" onclick="changeTVChannel('7')">7</button></font></td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="8" onclick="changeTVChannel('8')">8</button></font></td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="9" onclick="changeTVChannel('9')">9</button></font></td>
+				<td align="center">
+					<font color="white"><p align="center"><button class="setPresetChBtn" onclick="setChPreset('presetChannel3')">Set P3</button></p></font>
+				</td>
+				<td align="center"><font color="white">
+					<p><button class="presetChBtn" id="presetChannel3" onclick="changeTVChannel('presetChannel3')">345</button></p>
+				</font></td>
+			</tr>
+			<tr>
+				<td align="center"><font color="white">
+					<p align="center"><button class="recordBtn" id="add4" onclick="recordChannel('add4')">Add</button></p>
+				</td>
+				<td align="center"></td>
+				<td align="center"><font color="white"><button class="remoteBtn" id="0" onclick="changeTVChannel('0')">0</button></font></td>
+				<td align="center"></td>
+				<td align="center">
+					<font color="white"><p align="center"><button class="setPresetChBtn" onclick="setChPreset('presetChannel4')">Set P4</button></p></font>
+				</td>
+				<td align="center"><font color="white">
+					<p><button class="presetChBtn" id="presetChannel4" onclick="changeTVChannel('presetChannel4')">456</button></p>
+				</font></td>
+			</tr>
+			<tr>
+				<td><a href="music.html" target="_blank"><p align="center"><img src="http://www.soft32.com/blog/wp-content/uploads/2016/08/spotify_logo.png" style= height="50px" width="50px"></p></a><p align="center"><font style= size="1" face="arial" color="white">Spotify</font></p></td>
+				<td align="center"><font color="white"><button class="prevBtn">Vol. Up</button></td>
+				<td align="center"><p align="center"><button class="genericRemoteBtn"><img src="http://www.wpclipart.com/signs_symbol/arrows/arrow_large_sharp/Arrow_sharp_white_up_T.png" style= height="50px" width="30px"></button></p></td>
+				<td align="center"><font color="white"><button class="prevBtn">Ch. Up</button></td>
+				<td><a href="music.html" target="_blank"><p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ITunes_logo.svg/1200px-ITunes_logo.svg.png" style= height="50px" width="50px"></p></a><p align="center"><font style= size="1" face="arial" color="white">Apple Music</font></p></td>
+			</tr>
+			<tr>
+				<td><a href="cable radio.html" target="_blank"><p align="center"><img src="https://cdn4.iconfinder.com/data/icons/communication-220/64/technology-electrical-communications-antenna-wireless_connectivity-radio_antenna-wireless_internet-w-512.png" style= height="50px" width="50px" align="top"></p></a><p align="center"><font style= size="1" face="arial" color="white">Cable Radio</font></p></td>
+				<td align="center"><font color="white"><p align="center"><button class="genericRemoteBtn"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/White_left_arrow.svg/494px-White_left_arrow.svg.png" style= height="50px" width="25px"></button></p></font></td>
+				<td align="center"><font color="white"><button class="remoteBtn">Select</button></font></td>
+				<td align="center"><font color="white"><p align="center"><button class="genericRemoteBtn"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/White_right_arrow.svg/791px-White_right_arrow.svg.png" style= height="50px" width="25px"></button></p></font></td>
+				<td><a href="https://www.instagram.com/" target="_blank"><p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" style= height="100px" width="50px"></a></p><p align="center"><font style= size="1" face="arial" color="white">Instagram</font></p></td>
+			</tr>
+			<tr>
+				<td><a href="https://www.facebook.com/login.php" target="_blank"><p align="center"><img src="http://www.premierecreative.com/wp-content/uploads/2014/05/facebook-logo1.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="1" face="arial" color="white">Facebook</font></p></td>
+				<td align="center"><font color="white"><button class="prevBtn">Vol. Down</button></td>
+				<td><p align="center"><button class="genericRemoteBtn"><img src="http://www.clker.com/cliparts/c/5/3/6/12065629031662365704qubodup_16x16px-capable_black_and_white_icons.svg.hi.png" style= height="100px" width="30px"></button></p></td>
+				<td align="center"><font color="white"><button class="prevBtn">Ch. Down</button></td>
+				<td><a href="https://twitter.com/login/" target="_blank"><p align="center"><img src="http://1000logos.net/wp-content/uploads/2017/06/Twitter-Logo.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="1" face="arial" color="white">Twitter</font></p></td>
+			</tr>
+			<tr>
+				<td><a href="games.html" target="_blank"><p align="center"><img src="https://gameopic.files.wordpress.com/2016/09/logo-game.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="1" face="arial" color="white">Games</font></p></td>
+				<td><a href="history.html" target="_blank"><p align="center"><img src="https://minglebit.com/img/portfolios/app/products/iclock/iclock_logo.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="1" face="arial" color="white">History</font></p></td>
+				<td><a href="settings.html" target="_blank"><p align="center"><img src="https://cdn1.iconfinder.com/data/icons/luchesa/128/Settings-512.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="1" face="arial" color="white">Settings</font></p></td>
+				<td><a href="help.html" target="_blank"><p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Blue_question_mark_icon.svg/1024px-Blue_question_mark_icon.svg.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="1" face="arial" color="white">Help</font></p></td>
+				<td><a href="scheduling.html" target="_blank"><p align="center"><img src="https://cdn.pixabay.com/photo/2017/01/31/20/40/calendar-2027122_960_720.png" style= height="100px" width="50px"></p></a><p align="center"><font style= size="1" face="arial" color="white">Scheduling</font></p></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
