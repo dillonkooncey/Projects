@@ -1,3 +1,4 @@
+#Name: Dillon Koonce
 #Simple hangman Game
 import sys
 #Introduce player to the game
