@@ -1,0 +1,24 @@
+package App;
+
+import javafx.stage.Stage;
+
+/**
+ * Class that handles screen navigation.
+ * @author Dillon Koonce.
+ */
+public class AppController {
+    
+    public AppController(Stage _primraryStage) {
+        
+    }
+    
+    /**
+     * Method that handles screen routing within class.
+     * @param _screen - int value of desired screen.
+     */
+    public void route(int _screen) {
+        switch(_screen) {
+            
+        }
+    }
+}
