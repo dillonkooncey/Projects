@@ -1,0 +1,20 @@
+package DataBases;
+
+import java.sql.Date;
+import java.sql.Time;
+
+/**
+ * Interface for sporting events.
+ *
+ * @author Dillon Koonce.
+ */
+public interface EventsInterface {
+
+    public abstract boolean create(String _name, String _location, Date _date, Time _time, String _level);
+
+    public abstract boolean read(String _name, String _location, Date _date, Time _time, String _level);
+
+    public abstract boolean update(String _name, String _location, Date _date, Time _time, String _level);
+
+    public abstract boolean delete(String _name, String _location, Date _date, Time _time, String _level);
+}
